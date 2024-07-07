@@ -298,15 +298,23 @@ class _HomePageState extends State<HomePage> {
       SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.only(top: 4),
-          width: SizeConfig.screenWidth,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(12),
+              topRight: Radius.circular(12),
+            ),
+            color: Get.isDarkMode ? darkHeaderClr : Colors.white,
+          ),
+          width: SizeConfig.orientation == Orientation.landscape
+              ? SizeConfig.screenWidth * 0.57
+              : SizeConfig.screenWidth,
           height: (SizeConfig.orientation == Orientation.landscape)
               ? (task.isCompleted == 1
-                  ? SizeConfig.screenHeight * 0.6
-                  : SizeConfig.screenHeight * 0.8)
+                  ? SizeConfig.screenHeight * 0.52
+                  : SizeConfig.screenHeight * 0.65)
               : (task.isCompleted == 1
                   ? SizeConfig.screenHeight * 0.24
                   : SizeConfig.screenHeight * 0.32),
-          color: Get.isDarkMode ? darkHeaderClr : Colors.white,
           child: Column(
             children: [
               Flexible(
@@ -363,8 +371,12 @@ class _HomePageState extends State<HomePage> {
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 4),
-        height: 65,
-        width: SizeConfig.screenWidth * 0.9,
+        height: SizeConfig.orientation == Orientation.landscape
+            ? SizeConfig.screenHeight * 0.15
+            : SizeConfig.screenHeight * 0.07,
+        width: SizeConfig.orientation == Orientation.landscape
+            ? SizeConfig.screenWidth * 0.5
+            : SizeConfig.screenWidth * 0.9,
         decoration: BoxDecoration(
           border: Border.all(
             width: 2,

@@ -43,6 +43,7 @@ class ShowDeleteConfirmationDialog extends StatelessWidget {
           children: <Widget>[
             Text(
               title,
+              textAlign: TextAlign.center,
               style: titleStyle,
             ),
             const SizedBox(height: 15.0),

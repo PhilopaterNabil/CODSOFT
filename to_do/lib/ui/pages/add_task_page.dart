@@ -7,6 +7,7 @@ import 'package:to_do/controllers/task_controller.dart';
 import 'package:to_do/models/task.dart';
 import 'package:to_do/ui/theme.dart';
 import 'package:to_do/ui/widgets/button.dart';
+import 'package:to_do/ui/widgets/custom_snack_bar_content.dart';
 import 'package:to_do/ui/widgets/input_field.dart';
 
 class AddTaskPage extends StatefulWidget {
@@ -209,6 +210,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       ),
       elevation: 0,
       backgroundColor: context.theme.dialogBackgroundColor,
+      forceMaterialTransparency: true,
       actions: const [
         CircleAvatar(
           backgroundImage: AssetImage('assets/images/person.jpeg'),
@@ -224,18 +226,34 @@ class _AddTaskPageState extends State<AddTaskPage> {
       _AddTasksToDb();
       Get.back();
     } else {
-      Get.snackbar(
-        'Required',
-        'Please fill all the fields',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.white,
-        colorText: pinkClr,
-        icon: const Icon(
-          Icons.warning_amber_rounded,
-          color: Colors.red,
-        ),
-      );
+      _showSnakBarFlashBar();
+      // Get.snackbar(
+      //   'Required',
+      //   'Please fill all the fields',
+      //   snackPosition: SnackPosition.BOTTOM,
+      //   backgroundColor: Colors.white,
+      //   colorText: pinkClr,
+      //   icon: const Icon(
+      //     Icons.warning_amber_rounded,
+      //     color: Colors.red,
+      //   ),
+      // );
     }
+  }
+
+  _showSnakBarFlashBar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: CustomSnackBarContent(
+          errorText: 'Required fields!',
+          message: 'Please fill Title and Note fields',
+        ),
+        duration: Duration(seconds: 2),
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+      ),
+    );
   }
 
   _AddTasksToDb() async {
@@ -283,25 +301,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     child: CircleAvatar(
                       radius: 15,
                       backgroundColor: kColors[index % kColors.length],
-                      // index == 0
-                      //     ? kColors[0]
-                      //     : index == 1
-                      //         ? kColors[1]
-                      //         : index == 2
-                      //             ? kColors[2]
-                      //             : index == 3
-                      //                 ? kColors[3]
-                      //                 : index == 4
-                      //                     ? kColors[4]
-                      //                     : index == 5
-                      //                         ? kColors[5]
-                      //                         : index == 6
-                      //                             ? kColors[6]
-                      //                             : index == 7
-                      //                                 ? kColors[7]
-                      //                                 : index == 8
-                      //                                     ? kColors[8]
-                      //                                     : kColors[9],
                       child: _selectedColor == index
                           ? const Icon(
                               Icons.done,

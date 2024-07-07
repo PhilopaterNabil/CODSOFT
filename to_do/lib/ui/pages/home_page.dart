@@ -216,12 +216,12 @@ class _HomePageState extends State<HomePage> {
 
                     return AnimationConfiguration.staggeredList(
                       position: index,
-                      duration: const Duration(milliseconds: 1000),
+                      duration: const Duration(milliseconds: 800),
                       child: SlideAnimation(
                         verticalOffset: 300,
                         curve: Curves.fastLinearToSlowEaseIn,
                         child: FadeInAnimation(
-                          delay: Duration(milliseconds: 100 * (index + 1)),
+                          delay: Duration(milliseconds: 50 * (index + 1)),
                           curve: Curves.easeInCirc,
                           child: GestureDetector(
                             onTap: () => showBottomSheet(context, task),
@@ -397,6 +397,12 @@ class _HomePageState extends State<HomePage> {
             borderRadius: BorderRadius.circular(15.0),
           ),
           child: Container(
+            height: SizeConfig.orientation == Orientation.landscape
+                ? MediaQuery.sizeOf(context).height * 0.5
+                : MediaQuery.sizeOf(context).height * 0.25,
+            width: SizeConfig.orientation == Orientation.landscape
+                ? MediaQuery.sizeOf(context).width * 0.4
+                : MediaQuery.sizeOf(context).width,
             padding: const EdgeInsets.all(20.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -414,7 +420,7 @@ class _HomePageState extends State<HomePage> {
                   textAlign: TextAlign.center,
                   style: subTitleStyle,
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 35),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[

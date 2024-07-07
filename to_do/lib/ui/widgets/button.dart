@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do/ui/size_config.dart';
 import 'package:to_do/ui/theme.dart';
 
 class MyButton extends StatelessWidget {
@@ -12,7 +13,9 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.06,
+        height: SizeConfig.orientation == Orientation.landscape
+            ? MediaQuery.of(context).size.height * 0.12
+            : MediaQuery.of(context).size.height * 0.06,
         width: MediaQuery.of(context).size.width * 0.3,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),

@@ -10,6 +10,8 @@ const Color white = Colors.white;
 const primaryClr = bluishClr;
 const Color darkGreyClr = Color(0xff121212);
 const Color darkHeaderClr = Color(0xFF424242);
+const Color redErorrContainerClr = Color(0xFFC72C41);
+const Color redErorrbubblesClr = Color(0xFF801336);
 List<Color> kColors = const [
   Color(0xffAC3931),
   Color(0xffE5D352),

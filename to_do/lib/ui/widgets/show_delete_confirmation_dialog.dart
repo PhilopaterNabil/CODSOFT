@@ -32,7 +32,7 @@ class ShowDeleteConfirmationDialog extends StatelessWidget {
       ),
       child: Container(
         height: SizeConfig.orientation == Orientation.landscape
-            ? MediaQuery.sizeOf(context).height * 0.5
+            ? MediaQuery.sizeOf(context).height * 0.55
             : MediaQuery.sizeOf(context).height * 0.25,
         width: SizeConfig.orientation == Orientation.landscape
             ? MediaQuery.sizeOf(context).width * 0.4

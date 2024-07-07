@@ -15,6 +15,7 @@ import 'package:to_do/ui/pages/add_task_page.dart';
 import 'package:to_do/ui/size_config.dart';
 import 'package:to_do/ui/theme.dart';
 import 'package:to_do/ui/widgets/button.dart';
+import 'package:to_do/ui/widgets/show_delete_confirmation_dialog.dart';
 import 'package:to_do/ui/widgets/task_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -85,7 +86,17 @@ class _HomePageState extends State<HomePage> {
                 ),
         ),
         IconButton(
-          onPressed: () => _showDeleteConfirmationDialog(context),
+          onPressed: () => _showDeleteConfirmationDialog(
+            context,
+            onPressed: () {
+              notifyHelper.cancelAllNotification();
+              _taskController.deleteALLTasks();
+              Get.back();
+            },
+            title: 'Confirm Deletion of All Tasks',
+            description: 'Are you sure you want to delete all tasks?',
+            delete: 'Delete All',
+          ),
           icon: const Icon(
             Icons.cleaning_services_outlined,
             color: Colors.red,
@@ -332,17 +343,39 @@ class _HomePageState extends State<HomePage> {
                   ? Container()
                   : _buildBottomSheet(
                       label: 'Task Completed',
-                      onTap: () {
-                        _taskController.markUsCompleted(task);
-                        Get.back();
-                      },
+                      onTap: () => _showDeleteConfirmationDialog(
+                        context,
+                        onPressed: () {
+                          _taskController.markUsCompleted(task);
+                          Get.back();
+                          Get.back();
+                        },
+                        title: 'Confirm Task Completion',
+                        description:
+                            'Are you sure you have completed this task?',
+                        cancel: 'NO',
+                        isReturnBack: true,
+                        backgroundColor: Colors.green,
+                        delete: 'YES',
+                      ),
                       color: Colors.green,
                     ),
               _buildBottomSheet(
                 label: 'Delete Task',
                 onTap: () {
-                  _taskController.deleteTask(task);
-                  Get.back();
+                  _showDeleteConfirmationDialog(
+                    context,
+                    onPressed: () {
+                      _taskController.deleteTask(task);
+                      Get.back();
+                      Get.back();
+                    },
+                    title: 'Confirm Task Deletion',
+                    description: 'Are you sure you want to delete this task?',
+                    cancel: 'NO',
+                    isReturnBack: true,
+                    delete: 'YES',
+                  );
                 },
                 color: Colors.red[300]!,
               ),
@@ -400,64 +433,27 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _showDeleteConfirmationDialog(BuildContext context) {
+  void _showDeleteConfirmationDialog(
+    BuildContext context, {
+    required void Function() onPressed,
+    required String title,
+    required String description,
+    required String delete,
+    String? cancel,
+    Color? backgroundColor,
+    bool? isReturnBack,
+  }) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: Container(
-            height: SizeConfig.orientation == Orientation.landscape
-                ? MediaQuery.sizeOf(context).height * 0.5
-                : MediaQuery.sizeOf(context).height * 0.25,
-            width: SizeConfig.orientation == Orientation.landscape
-                ? MediaQuery.sizeOf(context).width * 0.4
-                : MediaQuery.sizeOf(context).width,
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const Text(
-                  'Confirm Deletion of All Tasks',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 15.0),
-                Text(
-                  'Are you sure you want to delete all tasks?',
-                  textAlign: TextAlign.center,
-                  style: subTitleStyle,
-                ),
-                const SizedBox(height: 35),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    ElevatedButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: const Text('Cancel'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        notifyHelper.cancelAllNotification();
-                        _taskController.deleteALLTasks();
-                        Get.back();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                      ),
-                      child: const Text('Delete All'),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+        return ShowDeleteConfirmationDialog(
+          onPressedDelete: onPressed,
+          title: title,
+          description: description,
+          cancel: cancel,
+          backgroundColor: backgroundColor,
+          isReturnBack: isReturnBack,
+          delete: delete,
         );
       },
     );

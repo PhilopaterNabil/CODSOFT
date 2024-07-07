@@ -43,10 +43,7 @@ class ShowDeleteConfirmationDialog extends StatelessWidget {
           children: <Widget>[
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
+              style: titleStyle,
             ),
             const SizedBox(height: 15.0),
             Text(

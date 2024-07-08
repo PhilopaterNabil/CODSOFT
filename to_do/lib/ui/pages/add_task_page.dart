@@ -277,16 +277,16 @@ class _AddTaskPageState extends State<AddTaskPage> {
     }
   }
 
-  SingleChildScrollView _colorPallete() {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('Color', style: titleStyle),
-          const SizedBox(height: 8),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.09,
-            width: MediaQuery.of(context).size.width * 0.5,
+  Column _colorPallete() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Color', style: titleStyle),
+        const SizedBox(height: 8),
+        SingleChildScrollView(
+          child: SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.1,
+            width: MediaQuery.sizeOf(context).width * 0.5,
             child: Wrap(
               children: List<Widget>.generate(
                 kColors.length,
@@ -299,12 +299,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(right: 8, bottom: 8),
                     child: CircleAvatar(
-                      radius: 15,
+                      radius: MediaQuery.sizeOf(context).height * 0.015,
                       backgroundColor: kColors[index % kColors.length],
                       child: _selectedColor == index
-                          ? const Icon(
+                          ? Icon(
                               Icons.done,
-                              size: 20,
+                              size: MediaQuery.sizeOf(context).height * 0.023,
                               color: Colors.white,
                             )
                           : null,
@@ -314,8 +314,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

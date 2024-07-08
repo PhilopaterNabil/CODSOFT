@@ -38,41 +38,58 @@ class TaskTile extends StatelessWidget {
                     Text(
                       task.title!,
                       style: GoogleFonts.lato(
-                        textStyle: const TextStyle(
+                        textStyle: TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize:
+                              SizeConfig.orientation == Orientation.landscape
+                                  ? MediaQuery.sizeOf(context).height * 0.045
+                                  : MediaQuery.sizeOf(context).height * 0.027,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                    const SizedBox(height: 4),
+                    SizedBox(
+                        height: SizeConfig.orientation == Orientation.landscape
+                            ? MediaQuery.sizeOf(context).height * 0.003
+                            : MediaQuery.sizeOf(context).height * 0.004),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.access_time_rounded,
-                          color: Colors.black87.withOpacity(0.7),
-                          size: 17,
+                          color: Colors.black87.withOpacity(0.6),
+                          size: SizeConfig.orientation == Orientation.landscape
+                              ? MediaQuery.sizeOf(context).height * 0.037
+                              : MediaQuery.sizeOf(context).height * 0.022,
                         ),
                         const SizedBox(width: 8),
                         Text(
                           '${task.startTime} - ${task.endTime}',
                           style: GoogleFonts.lato(
                             textStyle: TextStyle(
-                              color: Colors.black87.withOpacity(0.7),
-                              fontSize: 15,
+                              color: Colors.black87.withOpacity(0.65),
+                              fontSize: SizeConfig.orientation ==
+                                      Orientation.landscape
+                                  ? MediaQuery.sizeOf(context).height * 0.032
+                                  : MediaQuery.sizeOf(context).height * 0.016,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 14),
+                    SizedBox(
+                        height: SizeConfig.orientation == Orientation.landscape
+                            ? MediaQuery.sizeOf(context).height * 0.024
+                            : MediaQuery.sizeOf(context).height * 0.014),
                     Text(
                       task.note!,
                       style: GoogleFonts.lato(
-                        textStyle: const TextStyle(
+                        textStyle: TextStyle(
                           color: Colors.black87,
-                          fontSize: 17,
+                          fontSize:
+                              SizeConfig.orientation == Orientation.landscape
+                                  ? MediaQuery.sizeOf(context).height * 0.032
+                                  : MediaQuery.sizeOf(context).height * 0.018,
                         ),
                       ),
                     ),

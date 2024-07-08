@@ -14,9 +14,11 @@ class MyButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: SizeConfig.orientation == Orientation.landscape
-            ? MediaQuery.of(context).size.height * 0.12
+            ? MediaQuery.of(context).size.height * 0.11
             : MediaQuery.of(context).size.height * 0.06,
-        width: MediaQuery.of(context).size.width * 0.3,
+        width: SizeConfig.orientation == Orientation.landscape
+            ? MediaQuery.of(context).size.width * 0.18
+            : MediaQuery.of(context).size.width * 0.3,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: primaryClr,

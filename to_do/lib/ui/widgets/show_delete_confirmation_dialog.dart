@@ -44,15 +44,18 @@ class ShowDeleteConfirmationDialog extends StatelessWidget {
             Text(
               title,
               textAlign: TextAlign.center,
-              style: titleStyle,
+              style: titleStyle.copyWith(
+                fontSize: MediaQuery.sizeOf(context).shortestSide * 0.048,
+              ),
             ),
-            const SizedBox(height: 15.0),
+            const Spacer(flex: 1),
             Text(
               description,
               textAlign: TextAlign.center,
-              style: subTitleStyle,
+              style: subTitleStyle.copyWith(
+                  fontSize: MediaQuery.sizeOf(context).shortestSide * 0.037),
             ),
-            const SizedBox(height: 35),
+            const Spacer(flex: 3),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -72,6 +75,7 @@ class ShowDeleteConfirmationDialog extends StatelessWidget {
                 ),
               ],
             ),
+            const Spacer(),
           ],
         ),
       ),

@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           _addTaskBar(),
           _addDateBar(),
-          SizedBox(height: getProportionateScreenHeight(10)),
+          SizedBox(height: getProportionateScreenHeight(12)),
           _showTasks(),
         ],
       ),
@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
         DateTime.now(),
         height: SizeConfig.orientation == Orientation.landscape
             ? MediaQuery.of(context).size.height * 0.25
-            : MediaQuery.of(context).size.height * 0.12,
+            : MediaQuery.of(context).size.height * 0.14,
         width: SizeConfig.orientation == Orientation.landscape
             ? MediaQuery.of(context).size.width * 0.1
             : MediaQuery.of(context).size.width * 0.19,
@@ -156,19 +156,29 @@ class _HomePageState extends State<HomePage> {
         dateTextStyle: GoogleFonts.lato(
           textStyle: TextStyle(
             color: Get.isDarkMode ? Colors.white : Colors.black87,
-            fontSize: 20,
+            fontSize: SizeConfig.orientation == Orientation.landscape
+                ? MediaQuery.of(context).size.height * 0.036
+                : MediaQuery.of(context).size.height * 0.022,
             fontWeight: FontWeight.w600,
           ),
         ),
-        dayTextStyle: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-          color: Colors.grey,
+        dayTextStyle: GoogleFonts.lato(
+          textStyle: TextStyle(
+            fontSize: SizeConfig.orientation == Orientation.landscape
+                ? MediaQuery.of(context).size.height * 0.03
+                : MediaQuery.of(context).size.height * 0.016,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey,
+          ),
         ),
-        monthTextStyle: const TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w600,
-          color: Colors.grey,
+        monthTextStyle: GoogleFonts.lato(
+          textStyle: TextStyle(
+            fontSize: SizeConfig.orientation == Orientation.landscape
+                ? MediaQuery.of(context).size.height * 0.028
+                : MediaQuery.of(context).size.height * 0.014,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey,
+          ),
         ),
         onDateChange: (newDate) {
           setState(() => _selectedDate = newDate);
@@ -269,8 +279,10 @@ class _HomePageState extends State<HomePage> {
                     : Axis.vertical,
                 children: [
                   SizeConfig.orientation == Orientation.landscape
-                      ? const SizedBox(height: 6)
-                      : const SizedBox(height: 180),
+                      ? SizedBox(
+                          height: MediaQuery.sizeOf(context).height * 0.3)
+                      : SizedBox(
+                          height: MediaQuery.sizeOf(context).height * 0.18),
                   SvgPicture.asset(
                     'assets/images/task.svg',
                     color: primaryClr.withOpacity(0.5),
@@ -285,12 +297,18 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       'You do not have any tasks yet!\nAdd new tasks to make your days productive',
                       textAlign: TextAlign.center,
-                      style: subTitleStyle,
+                      style: subTitleStyle.copyWith(
+                          fontSize:
+                              SizeConfig.orientation == Orientation.landscape
+                                  ? MediaQuery.sizeOf(context).height * 0.04
+                                  : MediaQuery.sizeOf(context).height * 0.02),
                     ),
                   ),
                   SizeConfig.orientation == Orientation.landscape
-                      ? const SizedBox(height: 120)
-                      : const SizedBox(height: 180),
+                      ? SizedBox(
+                          height: MediaQuery.sizeOf(context).height * 0.3)
+                      : SizedBox(
+                          height: MediaQuery.sizeOf(context).height * 0.18),
                 ],
               ),
             ),

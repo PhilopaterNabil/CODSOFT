@@ -34,7 +34,7 @@ class InputField extends StatelessWidget {
             margin: const EdgeInsets.only(top: 4),
             height: SizeConfig.orientation == Orientation.landscape
                 ? MediaQuery.of(context).size.height * 0.12
-                : MediaQuery.of(context).size.height * 0.06,
+                : MediaQuery.of(context).size.height * 0.068,
             width: SizeConfig.screenWidth,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),

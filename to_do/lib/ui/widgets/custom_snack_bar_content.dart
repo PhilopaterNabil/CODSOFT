@@ -21,7 +21,7 @@ class CustomSnackBarContent extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             height: SizeConfig.orientation == Orientation.landscape
                 ? MediaQuery.sizeOf(context).height * 0.23
-                : MediaQuery.sizeOf(context).height * 0.1,
+                : MediaQuery.sizeOf(context).height * 0.11,
             width: SizeConfig.orientation == Orientation.landscape
                 ? MediaQuery.sizeOf(context).width * 0.5
                 : MediaQuery.sizeOf(context).width,
@@ -38,13 +38,25 @@ class CustomSnackBarContent extends StatelessWidget {
                     children: [
                       Text(
                         errorText,
-                        style: titleStyle.copyWith(color: white),
+                        style: titleStyle.copyWith(
+                            color: white,
+                            fontSize:
+                                SizeConfig.orientation == Orientation.landscape
+                                    ? MediaQuery.sizeOf(context).height * 0.045
+                                    : MediaQuery.sizeOf(context).height * 0.02),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                       const Spacer(),
-                      Text(message,
-                          style: subTitleStyle.copyWith(color: white)),
+                      Text(
+                        message,
+                        style: subTitleStyle.copyWith(
+                            color: white,
+                            fontSize: SizeConfig.orientation ==
+                                    Orientation.landscape
+                                ? MediaQuery.sizeOf(context).height * 0.04
+                                : MediaQuery.sizeOf(context).height * 0.017),
+                      ),
                     ],
                   ),
                 ),
@@ -83,7 +95,7 @@ class CustomSnackBarContent extends StatelessWidget {
                       : MediaQuery.sizeOf(context).height * 0.046,
                 ),
                 Positioned(
-                  top: 10,
+                  top: 8,
                   child: SvgPicture.asset(
                     'assets/icons/close.svg',
                     height: SizeConfig.orientation == Orientation.landscape

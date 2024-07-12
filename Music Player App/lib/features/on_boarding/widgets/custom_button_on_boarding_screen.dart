@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:music_player_app/core/resources/alignment_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
+import 'package:music_player_app/core/resources/font_managers.dart';
 import 'package:music_player_app/core/resources/height_values_managers.dart';
 import 'package:music_player_app/core/resources/radius_values_managers.dart';
-import 'package:music_player_app/core/resources/strings_values_managers.dart';
 import 'package:music_player_app/core/resources/width_values_managers.dart';
 
 class CustomButtonOnBoardingScreen extends StatelessWidget {
-  const CustomButtonOnBoardingScreen({super.key});
+  const CustomButtonOnBoardingScreen(
+      {super.key, required this.onPressed, required this.text});
+
+  final String text;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      onPressed: onPressed,
       child: Container(
         width: WidthValuesManagers.kWidth171,
         height: HeightValuesManagers.kHeight68,
@@ -23,7 +28,7 @@ class CustomButtonOnBoardingScreen extends StatelessWidget {
           border: const Border(
             top: BorderSide(
               color: ColorManagers.kWhiteColor,
-              width: WidthValuesManagers.kWidth2,
+              width: WidthValuesManagers.kWidth1,
             ),
           ),
           gradient: const LinearGradient(
@@ -36,12 +41,15 @@ class CustomButtonOnBoardingScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: const Text(
-          StringsValuesManagers.getStarted,
-          style: TextStyle(color: ColorManagers.kWhiteColor),
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: ColorManagers.kWhiteColor,
+            fontSize: FontSizeManagers.kFontSize18,
+            fontWeight: FontWeightManagers.kMedium,
+          ),
         ),
       ),
-      onPressed: () {},
     );
   }
 }

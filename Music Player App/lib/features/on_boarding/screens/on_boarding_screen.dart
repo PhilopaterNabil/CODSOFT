@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_player_app/core/resources/alignment_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
-import 'package:music_player_app/core/resources/font_managers.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -24,11 +23,32 @@ class OnBoardingScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: const Center(
-          child: Text(
-            'Music Player',
-            style:
-                TextStyle(fontFamily: FontManagers.orbitronPath, fontSize: 40),
+        child: const SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 111),
+              Text(
+                'Find Your Favourite',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  height: 1.2,
+                ),
+              ),
+              Text(
+                'Music',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xff80CFF2),
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  height: 1.2,
+                ),
+              ),
+            ],
           ),
         ),
       ),

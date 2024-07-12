@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_player_app/core/resources/font_managers.dart';
 import 'package:music_player_app/core/resources/routes_managers.dart';
 
 class MusicApp extends StatelessWidget {
@@ -10,7 +11,7 @@ class MusicApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        fontFamily: FontManagers.orbitronName,
         useMaterial3: true,
       ),
       initialRoute: RoutesName.kSplashScreen,

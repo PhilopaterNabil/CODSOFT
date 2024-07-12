@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_player_app/core/resources/alignment_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
 import 'package:music_player_app/core/resources/height_values_managers.dart';
+import 'package:music_player_app/features/on_boarding/widgets/custom_button_on_boarding_screen.dart';
 import 'package:music_player_app/features/on_boarding/widgets/custom_sub_title_on_boarding_screen.dart';
 import 'package:music_player_app/features/on_boarding/widgets/custom_title_on_boarding_screen.dart';
 
@@ -26,17 +27,16 @@ class OnBoardingScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: SafeArea(
+        child: const SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: HeightValuesManagers.kHeight111),
-              const CustomTitleOnBoardingScreen(),
-              const SizedBox(height: HeightValuesManagers.kHeight11),
-              const CustomSubTitleOnBoardingScreen(),
-              MaterialButton(
-                onPressed: () {},
-              ),
+              SizedBox(height: HeightValuesManagers.kHeight111),
+              CustomTitleOnBoardingScreen(),
+              SizedBox(height: HeightValuesManagers.kHeight11),
+              CustomSubTitleOnBoardingScreen(),
+              SizedBox(height: HeightValuesManagers.kHeight58),
+              CustomButtonOnBoardingScreen(),
             ],
           ),
         ),

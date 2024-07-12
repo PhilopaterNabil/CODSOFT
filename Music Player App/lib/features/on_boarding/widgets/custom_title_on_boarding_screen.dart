@@ -22,7 +22,7 @@ class CustomTitleOnBoardingScreen extends StatelessWidget {
           ),
         ),
         Text(
-          StringsValuesManagers.titleOnBoardingScreen2,
+          StringsValuesManagers.music,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: ColorManagers.kLightBlueColor,

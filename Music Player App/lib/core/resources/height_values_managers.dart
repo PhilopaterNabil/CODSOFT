@@ -7,4 +7,5 @@ class HeightValuesManagers {
   static const double kHeight78 = 78;
   static const double kHeight111 = 111;
   static const double kHeight150 = 150;
+  static const double kHeight199 = 199;
 }

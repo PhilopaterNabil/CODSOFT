@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:music_player_app/core/resources/color_managers.dart';
+import 'package:music_player_app/core/resources/font_managers.dart';
+import 'package:music_player_app/core/resources/height_values_managers.dart';
+import 'package:music_player_app/core/resources/strings_values_managers.dart';
 
 class CustomTitleOnBoardingScreen extends StatelessWidget {
   const CustomTitleOnBoardingScreen({super.key});
@@ -8,23 +12,23 @@ class CustomTitleOnBoardingScreen extends StatelessWidget {
     return const Column(
       children: [
         Text(
-          'Find Your Favourite',
+          StringsValuesManagers.titleOnBoardingScreen,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 50,
+            color: ColorManagers.kWhiteColor,
+            fontSize: FontSizeManagers.kFontSize50,
             fontWeight: FontWeight.bold,
-            height: 1.2,
+            height: HeightValuesManagers.kHeight1_2,
           ),
         ),
         Text(
-          'Music',
+          StringsValuesManagers.titleOnBoardingScreen2,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Color(0xff80CFF2),
-            fontSize: 50,
+            color: ColorManagers.kLightBlueColor,
+            fontSize: FontSizeManagers.kFontSize50,
             fontWeight: FontWeight.bold,
-            height: 1.2,
+            height: HeightValuesManagers.kHeight1_2,
           ),
         ),
       ],

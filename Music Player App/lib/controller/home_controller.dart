@@ -1,15 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:music_player_app/core/resources/color_managers.dart';
 
-class HomeController{
-      static List<Widget> homeIcon = [
-      Image.asset('assets/images/bottom_nav_images/Vector.png'),
-      Image.asset(
-        'assets/images/bottom_nav_images/Home.png',
-        color: ColorManagers.kWhiteColor,
+class HomeController {
+  static List<Widget> homeIcon = [
+    const Icon(Icons.subject),
+    const Icon(Icons.home_outlined),
+    const Icon(Icons.favorite_outline),
+    const Icon(Icons.format_list_bulleted_outlined),
+    const Icon(Icons.settings),
+  ];
+  static List<Widget> homePages = [
+    const Scaffold(
+      body: Center(
+        child: Text('Align_horizontal_center'),
       ),
-      Image.asset('assets/images/bottom_nav_images/heart.png'),
-      Image.asset('assets/images/bottom_nav_images/list_ul.png'),
-      Image.asset('assets/images/bottom_nav_images/Setting.png'),
-    ];
+    ),
+    const Scaffold(
+      body: Center(
+        child: Text('Home'),
+      ),
+    ),
+    const Scaffold(
+      body: Center(
+        child: Text('Heart_broken'),
+      ),
+    ),
+    const Scaffold(
+      body: Center(
+        child: Text('Align_horizontal_left'),
+      ),
+    ),
+    const Scaffold(
+      body: Center(
+        child: Text('Settings'),
+      ),
+    ),
+  ];
 }

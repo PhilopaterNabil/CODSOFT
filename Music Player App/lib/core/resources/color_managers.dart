@@ -7,4 +7,5 @@ class ColorManagers {
   static const Color kLightColor = Color(0xff3097C5);
   static const Color kLightBlueColor = Color(0xff80CFF2);
   static const Color kLight2BlueColor = Color(0xff2F5D9A);
+  static const Color kPurpleDarkColor = Color(0xff261F44);
 }

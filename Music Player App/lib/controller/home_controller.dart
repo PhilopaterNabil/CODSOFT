@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomeController {
-  static List<Widget> homeIcon = [
+  static List<Icon> homeIcon = [
     const Icon(Icons.subject),
     const Icon(Icons.home_outlined),
     const Icon(Icons.favorite_outline),

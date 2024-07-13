@@ -27,7 +27,11 @@ class HomeScreen extends StatelessWidget {
           children: [
             CustomTextFieldHomeScreen(),
             CustomTitleHomeScreen(),
-            CustomSongsHomeScreen(),
+            CustomSongsHomeScreen(
+              musicName: 'Who Says',
+              singerName: 'Selena Gomez',
+              itemCount: 3,
+            ),
           ],
         ),
       ),

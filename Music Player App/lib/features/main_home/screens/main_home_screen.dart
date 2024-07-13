@@ -10,7 +10,7 @@ class MainHomeScreen extends StatefulWidget {
 }
 
 class _MainHomeScreenState extends State<MainHomeScreen> {
-  int index = 0;
+  int index = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

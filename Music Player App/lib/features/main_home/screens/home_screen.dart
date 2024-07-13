@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:music_player_app/core/resources/alignment_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_text_field_home_screen.dart';
+import 'package:music_player_app/features/main_home/widgets/custom_title_home_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,8 +23,10 @@ class HomeScreen extends StatelessWidget {
       ),
       child: const SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomTextFieldHomeScreen(),
+            CustomTitleHomeScreen(),
           ],
         ),
       ),

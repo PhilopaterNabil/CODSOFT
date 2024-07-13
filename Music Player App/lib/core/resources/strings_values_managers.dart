@@ -5,4 +5,5 @@ class StringsValuesManagers {
       'Find Your Latest Favourite Music From Our Collection';
   static const String getStarted = 'Get Started';
   static const String searchSong = 'Search Song';
+  static const String recentlyPlayed = 'Recently Played';
 }

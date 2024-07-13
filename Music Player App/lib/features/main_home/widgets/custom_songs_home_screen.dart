@@ -8,7 +8,10 @@ import 'package:music_player_app/core/resources/width_values_managers.dart';
 
 class CustomSongsHomeScreen extends StatelessWidget {
   const CustomSongsHomeScreen(
-      {super.key, required this.musicName, required this.singerName, required this.itemCount});
+      {super.key,
+      required this.musicName,
+      required this.singerName,
+      required this.itemCount});
 
   final int itemCount;
   final String musicName;
@@ -16,7 +19,8 @@ class CustomSongsHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: HeightValuesManagers.kHeight230,
       child: Padding(
         padding: const EdgeInsets.only(
             left: PaddingValue.kPadding20, top: PaddingValue.kPadding22),

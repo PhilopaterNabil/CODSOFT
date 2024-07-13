@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:music_player_app/core/resources/alignment_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
+import 'package:music_player_app/core/resources/padding_value.dart';
+import 'package:music_player_app/core/resources/strings_values_managers.dart';
+import 'package:music_player_app/features/main_home/widgets/custom_row_recommended_music.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_songs_home_screen.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_text_field_home_screen.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_title_home_screen.dart';
@@ -26,12 +29,20 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomTextFieldHomeScreen(),
-            CustomTitleHomeScreen(),
+            CustomTitleHomeScreen(
+              title: StringsValuesManagers.recentlyPlayed,
+              top: PaddingValue.kPadding32,
+            ),
             CustomSongsHomeScreen(
               musicName: 'Who Says',
               singerName: 'Selena Gomez',
               itemCount: 3,
             ),
+            CustomTitleHomeScreen(
+              title: StringsValuesManagers.recommandedMusic,
+              top: PaddingValue.kPadding31,
+            ),
+            CustomRowRecommendedMusic(),
           ],
         ),
       ),

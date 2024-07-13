@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
 import 'package:music_player_app/core/resources/font_managers.dart';
+import 'package:music_player_app/core/resources/padding_value.dart';
+import 'package:music_player_app/core/resources/radius_values_managers.dart';
+import 'package:music_player_app/core/resources/strings_values_managers.dart';
 
 class CustomTextFieldHomeScreen extends StatelessWidget {
   const CustomTextFieldHomeScreen({super.key});
@@ -9,24 +12,32 @@ class CustomTextFieldHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 53, left: 31, right: 31),
+      padding: const EdgeInsets.only(
+          top: PaddingValue.kPadding53,
+          left: PaddingValue.kPadding31,
+          right: PaddingValue.kPadding31),
       child: TextField(
         decoration: InputDecoration(
           filled: true,
-          fillColor: const Color(0xffB1AFE9),
-          prefixIcon: const Icon(CupertinoIcons.search,
-              color: ColorManagers.kWhiteColor),
-          hintText: 'Search Song',
+          fillColor: ColorManagers.kLightWhiteColor,
+          prefixIcon: const Padding(
+            padding: EdgeInsets.only(
+                left: PaddingValue.kPadding15, right: PaddingValue.kPadding10),
+            child:
+                Icon(CupertinoIcons.search, color: ColorManagers.kWhiteColor),
+          ),
+          contentPadding: const EdgeInsets.all(PaddingValue.kPadding15),
+          hintText: StringsValuesManagers.searchSong,
           hintStyle: const TextStyle(
             color: ColorManagers.kWhiteColor,
-            fontSize: FontSizeManagers.kFontSize12,
+            fontSize: FontSizeManagers.kFontSize13,
             fontWeight: FontWeightManagers.kRegular,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(RadiusValuesManagers.kRadius50),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(RadiusValuesManagers.kRadius50),
           ),
         ),
       ),

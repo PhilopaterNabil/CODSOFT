@@ -8,10 +8,7 @@ import 'package:music_player_app/core/resources/width_values_managers.dart';
 import 'package:music_player_app/models/songs_model.dart';
 
 class CustomSongsHomeScreen extends StatelessWidget {
-  const CustomSongsHomeScreen({
-    super.key,
-    required this.songsModel,
-  });
+  const CustomSongsHomeScreen({super.key, required this.songsModel});
 
   final SongsModel songsModel;
 

@@ -7,4 +7,5 @@ class StringsValuesManagers {
   static const String searchSong = 'Search Song';
   static const String recentlyPlayed = 'Recently Played';
   static const String recommandedMusic = 'Recommanded Music';
+  static const String nowPlaying = 'Now Playing';
 }

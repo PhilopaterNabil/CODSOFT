@@ -26,16 +26,19 @@ class PlayMusicScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: const SafeArea(
+        child: SafeArea(
           child: SizedBox(
             width: double.infinity,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: HeightValuesManagers.kHeight98),
-                CustomSongsDetailsPlayMusicScreen(),
-                SizedBox(height: HeightValuesManagers.kHeight28),
-                CustomButtonControllerPlayMusicScreen(),
+                const SizedBox(height: HeightValuesManagers.kHeight98),
+                const CustomSongsDetailsPlayMusicScreen(),
+                const SizedBox(height: HeightValuesManagers.kHeight28),
+                CustomButtonControllerPlayMusicScreen(
+                  onChanged: (value) {},
+                  value: 0.5,
+                ),
               ],
             ),
           ),

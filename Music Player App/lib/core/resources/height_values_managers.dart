@@ -1,11 +1,14 @@
 class HeightValuesManagers {
   static const double kHeight1_2 = 1.2;
   static const double kHeight4 = 4;
+  static const double kHeight7 = 7;
+  static const double kHeight8 = 8;
   static const double kHeight9 = 9;
   static const double kHeight11 = 11;
   static const double kHeight20 = 20;
   static const double kHeight23 = 23;
   static const double kHeight28 = 28;
+  static const double kHeight29 = 29;
   static const double kHeight30_5 = 30;
   static const double kHeight36 = 36;
   static const double kHeight43 = 43;

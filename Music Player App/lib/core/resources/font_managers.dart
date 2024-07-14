@@ -7,11 +7,13 @@ class FontManagers {
 }
 
 class FontSizeManagers {
+  static const double kFontSize8 = 8;
   static const double kFontSize12 = 12;
   static const double kFontSize13 = 13;
   static const double kFontSize15 = 15;
   static const double kFontSize18 = 18;
   static const double kFontSize20 = 20;
+  static const double kFontSize24 = 24;
   static const double kFontSize50 = 50;
 }
 

@@ -8,4 +8,5 @@ class WidthValuesManagers{
   static const double kWidth151 = 151;
   static const double kWidth171 = 171;
   static const double kWidth247 = 247;
+  static const double kWidth252 = 252;
 }

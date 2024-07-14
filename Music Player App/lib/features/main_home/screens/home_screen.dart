@@ -7,6 +7,7 @@ import 'package:music_player_app/features/main_home/widgets/custom_row_recommend
 import 'package:music_player_app/features/main_home/widgets/custom_songs_home_screen.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_text_field_home_screen.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_title_home_screen.dart';
+import 'package:music_player_app/models/songs_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,26 +25,44 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      child: const SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomTextFieldHomeScreen(),
-            CustomTitleHomeScreen(
-              title: StringsValuesManagers.recentlyPlayed,
-              top: PaddingValue.kPadding32,
-            ),
-            CustomSongsHomeScreen(
-              musicName: 'Who Says',
-              singerName: 'Selena Gomez',
-              itemCount: 3,
-            ),
-            CustomTitleHomeScreen(
-              title: StringsValuesManagers.recommandedMusic,
-              top: PaddingValue.kPadding31,
-            ),
-            CustomRowRecommendedMusic(),
-          ],
+      child: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CustomTextFieldHomeScreen(),
+              const CustomTitleHomeScreen(
+                title: StringsValuesManagers.recentlyPlayed,
+                top: PaddingValue.kPadding32,
+              ),
+              CustomSongsHomeScreen(
+                songsModel: SongsModel(
+                  image: 'image',
+                  singer: 'singer',
+                  song: 'song',
+                  pathSong: 'pathSong',
+                ),
+              ),
+              const CustomTitleHomeScreen(
+                title: StringsValuesManagers.recommandedMusic,
+                top: PaddingValue.kPadding31,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: PaddingValue.kPadding21, left: PaddingValue.kPadding8),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 10,
+                  itemBuilder: (context, index) =>
+                      const CustomRowRecommendedMusic(
+                    title: 'Magenta Riddim',
+                    subtitle: 'Dj Snake',
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
 import 'package:music_player_app/core/resources/font_managers.dart';
+import 'package:music_player_app/core/resources/padding_value.dart';
 import 'package:music_player_app/core/resources/radius_values_managers.dart';
 
 class CustomToolsPlayMusicScreen extends StatelessWidget {
@@ -10,8 +11,10 @@ class CustomToolsPlayMusicScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(7),
-      margin: const EdgeInsets.symmetric(horizontal: 89, vertical: 7),
+      padding: const EdgeInsets.all(PaddingValue.kPadding7),
+      margin: const EdgeInsets.symmetric(
+          horizontal: PaddingValue.kPadding89,
+          vertical: PaddingValue.kPadding7),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(RadiusValuesManagers.kRadius10),

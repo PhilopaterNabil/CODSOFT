@@ -1,6 +1,7 @@
 class WidthValuesManagers{
   static const double kWidth1 = 1;
   static const double kWidth2 = 2;
+  static const double kWidth16_68 = 16.68;
   static const double kWidth17 = 17;
   static const double kWidth20 = 20;
   static const double kWidth36 = 36;

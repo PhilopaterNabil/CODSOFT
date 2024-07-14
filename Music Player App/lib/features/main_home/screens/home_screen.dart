@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_player_app/controller/home_controller.dart';
 import 'package:music_player_app/core/resources/alignment_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
 import 'package:music_player_app/core/resources/padding_value.dart';
@@ -42,6 +43,7 @@ class HomeScreen extends StatelessWidget {
                   song: 'song',
                   pathSong: 'pathSong',
                 ),
+                onTap: () => HomeController.navigatorToPlayMusicScreen(context),
               ),
               const CustomTitleHomeScreen(
                 title: StringsValuesManagers.recommandedMusic,

@@ -13,7 +13,7 @@ class CustomTools2PlayMusicScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 13),
+      padding: const EdgeInsets.symmetric(vertical: PaddingValue.kPadding11, horizontal: 13),
       margin: const EdgeInsets.symmetric(horizontal: 34, vertical: 25),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(

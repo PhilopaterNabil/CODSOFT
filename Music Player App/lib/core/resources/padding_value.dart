@@ -3,6 +3,7 @@ class PaddingValue {
   static const double kPadding7 = 7;
   static const double kPadding8 = 8;
   static const double kPadding10 = 10;
+  static const double kPadding11 = 11;
   static const double kPadding15 = 15;
   static const double kPadding20 = 20;
   static const double kPadding21 = 21;

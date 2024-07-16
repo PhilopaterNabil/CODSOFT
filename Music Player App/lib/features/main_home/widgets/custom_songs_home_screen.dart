@@ -12,7 +12,7 @@ class CustomSongsHomeScreen extends StatelessWidget {
       {super.key, required this.songsModel, required this.onTap});
 
   final List<SongsModel> songsModel;
-  final void Function() onTap;
+  final void Function(int index) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class CustomSongsHomeScreen extends StatelessWidget {
               const SizedBox(width: WidthValuesManagers.kWidth17),
           itemBuilder: (context, index) {
             return GestureDetector(
-              onTap: onTap,
+              onTap: () => onTap(index),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

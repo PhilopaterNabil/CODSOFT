@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
 import 'package:music_player_app/core/resources/font_managers.dart';
@@ -44,7 +43,7 @@ class CustomToolsPlayMusicScreen extends StatelessWidget {
           Column(
             children: [
               Icon(
-                CupertinoIcons.heart,
+                Icons.queue_music_rounded,
                 size: FontSizeManagers.kFontSize24,
                 color: ColorManagers.kWhiteColor,
               ),

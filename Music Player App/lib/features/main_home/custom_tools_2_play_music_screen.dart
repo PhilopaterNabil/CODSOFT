@@ -13,8 +13,12 @@ class CustomTools2PlayMusicScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: PaddingValue.kPadding11, horizontal: 13),
-      margin: const EdgeInsets.symmetric(horizontal: 34, vertical: 25),
+      padding: const EdgeInsets.symmetric(
+          vertical: PaddingValue.kPadding11,
+          horizontal: PaddingValue.kPadding13),
+      margin: const EdgeInsets.symmetric(
+          horizontal: PaddingValue.kPadding34,
+          vertical: PaddingValue.kPadding25),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(RadiusValuesManagers.kRadius10),
@@ -55,15 +59,16 @@ class CustomTools2PlayMusicScreen extends StatelessWidget {
             ],
           ),
           ListTile(
-            contentPadding: const EdgeInsets.only(left: 0, right: 4),
+            contentPadding: const EdgeInsets.only(
+                left: PaddingValue.kPadding0, right: PaddingValue.kPadding4),
             leading: ClipRRect(
               borderRadius:
                   BorderRadius.circular(RadiusValuesManagers.kRadius10),
               child: Image.asset(
                 AssetsManagers.test,
                 fit: BoxFit.cover,
-                width: 55,
-                height: 55,
+                width: WidthValuesManagers.kWidth55,
+                height: HeightValuesManagers.kHeight55,
               ),
             ),
             title: const Text(

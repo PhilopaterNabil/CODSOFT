@@ -9,4 +9,6 @@ class AssetsManagers {
   static const pause = '$pathControllersMusicImages/pause.png';
   static const next = '$pathControllersMusicImages/skip_next.png';
   static const loop = '$pathControllersMusicImages/loop.png';
+  static const playList = '$pathControllersMusicImages/playlist.png';
+  static const download = '$pathControllersMusicImages/download.png';
 }

@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
 import 'package:music_player_app/core/resources/font_managers.dart';
 import 'package:music_player_app/core/resources/radius_values_managers.dart';
+import 'package:music_player_app/models/songs_model.dart';
 
 class CustomRowRecommandedMusic extends StatelessWidget {
-  const CustomRowRecommandedMusic(
-      {super.key, required this.title, required this.subtitle});
+  const CustomRowRecommandedMusic({super.key, required this.songsModel});
 
-  final String title;
-  final String subtitle;
+  final SongsModel songsModel;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const CircleAvatar(
+      leading: CircleAvatar(
         radius: RadiusValuesManagers.kRadius35,
-        backgroundImage: AssetImage('assets/images/test.png'),
+        backgroundImage: AssetImage(songsModel.image),
       ),
       title: Text(
-        title,
+        songsModel.song,
         style: const TextStyle(
           color: ColorManagers.kWhiteColor,
           fontSize: FontSizeManagers.kFontSize15,
@@ -26,7 +25,7 @@ class CustomRowRecommandedMusic extends StatelessWidget {
         ),
       ),
       subtitle: Text(
-        subtitle,
+        songsModel.singer,
         style: const TextStyle(
           color: ColorManagers.kLightWhiteColor,
           fontSize: FontSizeManagers.kFontSize12,

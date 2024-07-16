@@ -38,14 +38,17 @@ class HomeScreen extends StatelessWidget {
               ),
               CustomSongsHomeScreen(
                 songsModel: ConstantsValue().listAlhan,
-                onTap: () => HomeController.navigatorToPlayMusicScreen(context: context),
+                onTap: () =>
+                    HomeController.navigatorToPlayMusicScreen(context: context),
               ),
               const CustomTitleHomeScreen(
                 title: StringsValuesManagers.recommandedMusic,
                 top: PaddingValue.kPadding31,
               ),
               CustomRecommandedMusicHomeScreen(
-                onTap: () => HomeController.navigatorToPlayMusicScreen(context: context),
+                onTap: () =>
+                    HomeController.navigatorToPlayMusicScreen(context: context),
+                listSongsModel: ConstantsValue().listAlhan,
               ),
             ],
           ),

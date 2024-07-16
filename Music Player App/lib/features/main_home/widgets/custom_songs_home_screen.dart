@@ -30,7 +30,7 @@ class CustomSongsHomeScreen extends StatelessWidget {
             return GestureDetector(
               onTap: onTap,
               child: Column(
-                // crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
                     borderRadius:

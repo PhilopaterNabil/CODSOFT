@@ -3,8 +3,8 @@ import 'package:music_player_app/core/resources/color_managers.dart';
 import 'package:music_player_app/core/resources/font_managers.dart';
 import 'package:music_player_app/core/resources/radius_values_managers.dart';
 
-class CustomRowRecommendedMusic extends StatelessWidget {
-  const CustomRowRecommendedMusic(
+class CustomRowRecommandedMusic extends StatelessWidget {
+  const CustomRowRecommandedMusic(
       {super.key, required this.title, required this.subtitle});
 
   final String title;

@@ -5,7 +5,7 @@ import 'package:music_player_app/core/resources/color_managers.dart';
 import 'package:music_player_app/core/resources/constants_value.dart';
 import 'package:music_player_app/core/resources/padding_value.dart';
 import 'package:music_player_app/core/resources/strings_values_managers.dart';
-import 'package:music_player_app/features/main_home/widgets/custom_row_recommended_music.dart';
+import 'package:music_player_app/features/main_home/widgets/custom_recommanded_music.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_songs_home_screen.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_text_field_home_screen.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_title_home_screen.dart';
@@ -44,20 +44,7 @@ class HomeScreen extends StatelessWidget {
                 title: StringsValuesManagers.recommandedMusic,
                 top: PaddingValue.kPadding31,
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: PaddingValue.kPadding21, left: PaddingValue.kPadding8),
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 10,
-                  itemBuilder: (context, index) =>
-                      const CustomRowRecommendedMusic(
-                    title: 'Magenta Riddim',
-                    subtitle: 'Dj Snake',
-                  ),
-                ),
-              ),
+              const CustomRecommandedMusic(),
             ],
           ),
         ),

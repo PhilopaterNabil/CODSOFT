@@ -7,11 +7,12 @@ import 'package:music_player_app/core/resources/padding_value.dart';
 import 'package:music_player_app/features/play_music/widgets/custom_single_button_controller.dart';
 
 class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
-  const CustomButtonControllerPlayMusicScreen(
-      {super.key,
-      required this.onChanged,
-      required this.value,
-      required this.pathSong});
+  const CustomButtonControllerPlayMusicScreen({
+    super.key,
+    required this.onChanged,
+    required this.value,
+    required this.pathSong,
+  });
 
   final void Function(double) onChanged;
   final double value;

@@ -1,22 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:music_player_app/controller/home_controller.dart';
+import 'package:music_player_app/controller/play_music_controller.dart';
 import 'package:music_player_app/core/resources/alignment_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
+import 'package:music_player_app/core/resources/constants_value.dart';
 import 'package:music_player_app/core/resources/height_values_managers.dart';
 import 'package:music_player_app/features/main_home/custom_tools_2_play_music_screen.dart';
 import 'package:music_player_app/features/play_music/widgets/custom_app_bar_play_music_screen.dart';
 import 'package:music_player_app/features/play_music/widgets/custom_button_controller_play_music_screen.dart';
 import 'package:music_player_app/features/play_music/widgets/custom_songs_details_play_music_screen.dart';
 import 'package:music_player_app/features/play_music/widgets/custom_tools_play_music_screen.dart';
-import 'package:music_player_app/models/songs_model.dart';
 
-class PlayMusicScreen extends StatelessWidget {
+class PlayMusicScreen extends StatefulWidget {
   const PlayMusicScreen({super.key});
 
   @override
+  State<PlayMusicScreen> createState() => _PlayMusicScreenState();
+}
+
+class _PlayMusicScreenState extends State<PlayMusicScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  late int index;
+  late PlayMusicController _playMusicController;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    index = ModalRoute.of(context)!.settings.arguments as int;
+    _playMusicController = PlayMusicController(index);
+  }
+
+  void disose() {
+    _playMusicController.displayAudio();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    SongsModel songsModel =
-        ModalRoute.of(context)!.settings.arguments as SongsModel;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBarPlayMusicScreen(
@@ -42,12 +66,13 @@ class PlayMusicScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Spacer(),
-                CustomSongsDetailsPlayMusicScreen(songsModel: songsModel),
+                CustomSongsDetailsPlayMusicScreen(
+                    songsModel: ConstantsValue().listAlhan[index]),
                 const SizedBox(height: HeightValuesManagers.kHeight28),
                 CustomButtonControllerPlayMusicScreen(
                   onChanged: (value) {},
                   value: 0.5,
-                  pathSong: songsModel.pathSong,
+                  pathSong: ConstantsValue().listAlhan[index].pathSong,
                 ),
                 const CustomToolsPlayMusicScreen(),
                 const CustomTools2PlayMusicScreen(),

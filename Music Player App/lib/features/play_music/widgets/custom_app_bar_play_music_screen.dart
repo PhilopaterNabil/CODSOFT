@@ -5,14 +5,16 @@ import 'package:music_player_app/core/resources/strings_values_managers.dart';
 
 class CustomAppBarPlayMusicScreen extends StatelessWidget
     implements PreferredSizeWidget {
-  const CustomAppBarPlayMusicScreen({super.key});
+  const CustomAppBarPlayMusicScreen({super.key, required this.onPressedArrowBack});
+
+  final void Function() onPressedArrowBack;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: ColorManagers.kTransparentColor,
       leading: IconButton(
-        onPressed: () => Navigator.pop(context),
+        onPressed: onPressedArrowBack,
         icon: const Icon(
           Icons.arrow_back_ios,
           size: FontSizeManagers.kFontSize20,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_player_app/controller/home_controller.dart';
 import 'package:music_player_app/core/resources/alignment_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
 import 'package:music_player_app/core/resources/height_values_managers.dart';
@@ -15,7 +16,10 @@ class PlayMusicScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const CustomAppBarPlayMusicScreen(),
+      appBar: CustomAppBarPlayMusicScreen(
+        onPressedArrowBack: () =>
+            HomeController.navigatorToPop(context: context),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(

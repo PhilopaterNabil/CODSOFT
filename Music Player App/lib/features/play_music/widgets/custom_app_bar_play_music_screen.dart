@@ -41,7 +41,7 @@ class CustomAppBarPlayMusicScreen extends StatelessWidget
           onPressed: () {},
           icon: const Icon(
             Icons.more_vert_outlined,
-            size: FontSizeManagers.kFontSize20,
+            size: FontSizeManagers.kFontSize24,
             color: ColorManagers.kWhiteColor,
           ),
         ),

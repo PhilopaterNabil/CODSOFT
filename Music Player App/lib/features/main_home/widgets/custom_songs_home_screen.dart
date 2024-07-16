@@ -11,7 +11,7 @@ class CustomSongsHomeScreen extends StatelessWidget {
   const CustomSongsHomeScreen(
       {super.key, required this.songsModel, required this.onTap});
 
-  final SongsModel songsModel;
+  final List<SongsModel> songsModel;
   final void Function() onTap;
 
   @override
@@ -22,7 +22,7 @@ class CustomSongsHomeScreen extends StatelessWidget {
         padding: const EdgeInsets.only(
             left: PaddingValue.kPadding20, top: PaddingValue.kPadding22),
         child: ListView.separated(
-          itemCount: songsModel.song.length,
+          itemCount: songsModel.length,
           scrollDirection: Axis.horizontal,
           separatorBuilder: (context, index) =>
               const SizedBox(width: WidthValuesManagers.kWidth17),
@@ -30,13 +30,13 @@ class CustomSongsHomeScreen extends StatelessWidget {
             return GestureDetector(
               onTap: onTap,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
                     borderRadius:
                         BorderRadius.circular(RadiusValuesManagers.kRadius10),
                     child: Image.asset(
-                      'assets/images/test.png',
+                      songsModel[index].image,
                       fit: BoxFit.cover,
                       width: WidthValuesManagers.kWidth151,
                       height: HeightValuesManagers.kHeight151,
@@ -44,16 +44,16 @@ class CustomSongsHomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: HeightValuesManagers.kHeight9),
                   Text(
-                    songsModel.song,
+                    songsModel[index].song,
                     style: const TextStyle(
                       color: ColorManagers.kWhiteColor,
                       fontSize: FontSizeManagers.kFontSize15,
                       fontWeight: FontWeightManagers.kMedium,
                     ),
                   ),
-                  const SizedBox(height: HeightValuesManagers.kHeight4),
+                  // const SizedBox(height: HeightValuesManagers.kHeight4),
                   Text(
-                    songsModel.singer,
+                    songsModel[index].singer,
                     style: const TextStyle(
                       color: ColorManagers.kLightWhiteColor,
                       fontSize: FontSizeManagers.kFontSize13,

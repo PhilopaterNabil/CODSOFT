@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:music_player_app/controller/home_controller.dart';
 import 'package:music_player_app/core/resources/alignment_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
+import 'package:music_player_app/core/resources/constants_value.dart';
 import 'package:music_player_app/core/resources/padding_value.dart';
 import 'package:music_player_app/core/resources/strings_values_managers.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_row_recommended_music.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_songs_home_screen.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_text_field_home_screen.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_title_home_screen.dart';
-import 'package:music_player_app/models/songs_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -37,12 +37,7 @@ class HomeScreen extends StatelessWidget {
                 top: PaddingValue.kPadding32,
               ),
               CustomSongsHomeScreen(
-                songsModel: SongsModel(
-                  image: 'image',
-                  singer: 'singer',
-                  song: 'song',
-                  pathSong: 'pathSong',
-                ),
+                songsModel: ConstantsValue().listAlhan,
                 onTap: () => HomeController.navigatorToPlayMusicScreen(context),
               ),
               const CustomTitleHomeScreen(

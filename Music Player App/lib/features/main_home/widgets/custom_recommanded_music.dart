@@ -7,7 +7,7 @@ class CustomRecommandedMusicHomeScreen extends StatelessWidget {
   const CustomRecommandedMusicHomeScreen(
       {super.key, required this.onTap, required this.listSongsModel});
 
-  final void Function() onTap;
+  final void Function(int value) onTap;
   final List<SongsModel> listSongsModel;
 
   @override
@@ -20,7 +20,7 @@ class CustomRecommandedMusicHomeScreen extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: listSongsModel.length,
         itemBuilder: (context, index) => GestureDetector(
-          onTap: onTap,
+          onTap: () => onTap(index),
           child: CustomRowRecommandedMusic(songsModel: listSongsModel[index]),
         ),
       ),

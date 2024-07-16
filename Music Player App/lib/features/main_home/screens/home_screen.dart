@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: double.infinity,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment(AlignmentManagersX.x0_20, AlignmentManagersY.y_0_98),
@@ -38,16 +39,16 @@ class HomeScreen extends StatelessWidget {
               ),
               CustomSongsHomeScreen(
                 songsModel: ConstantsValue().listAlhan,
-                onTap: () =>
-                    HomeController.navigatorToPlayMusicScreen(context: context),
+                onTap: (index) => HomeController.navigatorToPlayMusicScreen(
+                    context: context, index: index),
               ),
               const CustomTitleHomeScreen(
                 title: StringsValuesManagers.recommandedMusic,
                 top: PaddingValue.kPadding31,
               ),
               CustomRecommandedMusicHomeScreen(
-                onTap: () =>
-                    HomeController.navigatorToPlayMusicScreen(context: context),
+                onTap: (index) => HomeController.navigatorToPlayMusicScreen(
+                    context: context, index: index),
                 listSongsModel: ConstantsValue().listAlhan,
               ),
             ],

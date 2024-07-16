@@ -8,10 +8,14 @@ import 'package:music_player_app/features/play_music/widgets/custom_single_butto
 
 class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
   const CustomButtonControllerPlayMusicScreen(
-      {super.key, required this.onChanged, required this.value});
+      {super.key,
+      required this.onChanged,
+      required this.value,
+      required this.pathSong});
 
   final void Function(double) onChanged;
   final double value;
+  final String pathSong;
 
   @override
   Widget build(BuildContext context) {

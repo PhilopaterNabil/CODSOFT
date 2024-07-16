@@ -8,12 +8,15 @@ import 'package:music_player_app/features/play_music/widgets/custom_app_bar_play
 import 'package:music_player_app/features/play_music/widgets/custom_button_controller_play_music_screen.dart';
 import 'package:music_player_app/features/play_music/widgets/custom_songs_details_play_music_screen.dart';
 import 'package:music_player_app/features/play_music/widgets/custom_tools_play_music_screen.dart';
+import 'package:music_player_app/models/songs_model.dart';
 
 class PlayMusicScreen extends StatelessWidget {
   const PlayMusicScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SongsModel songsModel =
+        ModalRoute.of(context)!.settings.arguments as SongsModel;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBarPlayMusicScreen(
@@ -39,10 +42,13 @@ class PlayMusicScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Spacer(),
-                const CustomSongsDetailsPlayMusicScreen(),
+                CustomSongsDetailsPlayMusicScreen(songsModel: songsModel),
                 const SizedBox(height: HeightValuesManagers.kHeight28),
                 CustomButtonControllerPlayMusicScreen(
-                    onChanged: (value) {}, value: 0.5),
+                  onChanged: (value) {},
+                  value: 0.5,
+                  pathSong: songsModel.pathSong,
+                ),
                 const CustomToolsPlayMusicScreen(),
                 const CustomTools2PlayMusicScreen(),
               ],

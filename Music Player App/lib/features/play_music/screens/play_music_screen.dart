@@ -73,6 +73,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                   onChanged: (value) {},
                   value: 0.5,
                   pathSong: ConstantsValue().listAlhan[index].pathSong,
+                  onStop: () => _playMusicController.stopAudio(),
                 ),
                 const CustomToolsPlayMusicScreen(),
                 const CustomTools2PlayMusicScreen(),

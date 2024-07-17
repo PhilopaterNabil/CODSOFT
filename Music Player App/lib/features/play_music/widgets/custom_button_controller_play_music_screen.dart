@@ -11,12 +11,13 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
     super.key,
     required this.onChanged,
     required this.value,
-    required this.pathSong,
+    required this.pathSong, required this.onStop,
   });
 
   final void Function(double) onChanged;
   final double value;
   final String pathSong;
+  final void Function() onStop;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
               backgroundColor: ColorManagers.kLightWhiteColor,
               radius: HeightValuesManagers.kHeight30_5,
               child: IconButton(
-                onPressed: () {},
+                onPressed: onStop,
                 icon: Image.asset(AssetsManagers.pause),
               ),
             ),

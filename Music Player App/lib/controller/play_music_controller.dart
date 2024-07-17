@@ -20,6 +20,14 @@ class PlayMusicController {
     audioPlayer.play(UrlSource(uri.toString()));
   }
 
+  void stopAudio() {
+    if (audioPlayer.state == PlayerState.playing) {
+      audioPlayer.pause();
+    } else if (audioPlayer.state == PlayerState.paused) {
+      audioPlayer.resume();
+    }
+  }
+
   void displayAudio() {
     audioPlayer.dispose();
   }

@@ -35,7 +35,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
   }
 
   void disose() {
-    _playMusicController.displayAudio();
+    // _playMusicController.displayAudio();
     super.dispose();
   }
 

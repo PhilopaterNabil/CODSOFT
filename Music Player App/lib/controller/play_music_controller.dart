@@ -19,11 +19,14 @@ class PlayMusicController {
     playStatusStreamController = StreamController<bool>();
     playStatusInputData = playStatusStreamController.sink;
     playStatusOutputData = playStatusStreamController.stream;
+    playStatusOutputData =
+        playStatusStreamController.stream.asBroadcastStream();
   }
 
   static PlayMusicController? instance;
 
   factory PlayMusicController(int index) {
+    if (instance != null) instance!.index = index;
     instance ??= PlayMusicController._internal(index);
     return instance!;
   }
@@ -48,6 +51,7 @@ class PlayMusicController {
   }
 
   void displayAudio() {
-    audioPlayer.dispose();
+    // playStatusInputData.close();
+    // playStatusStreamController.close();
   }
 }

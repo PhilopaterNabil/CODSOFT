@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:music_player_app/core/resources/assets_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
@@ -11,13 +13,16 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
     super.key,
     required this.onChanged,
     required this.value,
-    required this.pathSong, required this.onStop,
+    required this.pathSong,
+    required this.onStop,
+    required this.playStatusOutputData,
   });
 
   final void Function(double) onChanged;
   final double value;
   final String pathSong;
   final void Function() onStop;
+  final Stream playStatusOutputData;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +42,18 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
             CircleAvatar(
               backgroundColor: ColorManagers.kLightWhiteColor,
               radius: HeightValuesManagers.kHeight30_5,
-              child: IconButton(
-                onPressed: onStop,
-                icon: Image.asset(AssetsManagers.pause),
+              child: StreamBuilder(
+                stream: playStatusOutputData,
+                builder: (context, snapshot) => IconButton(
+                  onPressed: onStop,
+                  icon: snapshot.data == true
+                      ? Image.asset(AssetsManagers.pause)
+                      : const Icon(
+                          Icons.play_arrow,
+                          color: ColorManagers.kWhiteColor,
+                          size: 35,
+                        ),
+                ),
               ),
             ),
             CustomSingleButtonController(

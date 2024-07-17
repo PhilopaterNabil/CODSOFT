@@ -23,11 +23,13 @@ class CustomLogoSplashScreen extends StatelessWidget {
           ],
         ),
       ),
-      child: Center(
-        child: Image.asset(
-          AssetsManagers.logo,
-          width: MediaQuery.sizeOf(context).width * 0.6,
-          height: MediaQuery.sizeOf(context).height * 0.6,
+      child: SafeArea(
+        child: Center(
+          child: Image.asset(
+            AssetsManagers.logo,
+            width: MediaQuery.sizeOf(context).width * 0.36,
+            height: MediaQuery.sizeOf(context).height * 0.36,
+          ),
         ),
       ),
     );

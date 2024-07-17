@@ -4,10 +4,10 @@ import 'package:music_player_app/core/resources/time_managers.dart';
 
 class SplashController {
   static void navigatorToOnBoardingScreen({required BuildContext context}) {
-    Future.delayed(
-      const Duration(seconds: SecondsValues.kSeconds3),
-      () =>
-          Navigator.pushReplacementNamed(context, RoutesName.kOnBoardingScreen),
-    );
+    // Future.delayed(
+    //   const Duration(seconds: SecondsValues.kSeconds3),
+    //   () =>
+    //       Navigator.pushReplacementNamed(context, RoutesName.kOnBoardingScreen),
+    // );
   }
 }

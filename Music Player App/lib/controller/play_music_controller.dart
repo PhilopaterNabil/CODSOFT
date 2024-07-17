@@ -5,13 +5,14 @@ class PlayMusicController {
   late int index;
   late AudioPlayer audioPlayer;
   late AudioCache audioCache;
+  late Uri uri;
   PlayMusicController(this.index) {
     audioPlayer = AudioPlayer();
     audioCache = AudioCache(prefix: '');
   }
 
   void play() async {
-    Uri uri = await audioCache.load(ConstantsValue().listAlhan[index].pathSong);
+    uri = await audioCache.load(ConstantsValue().listAlhan[index].pathSong);
 
     audioPlayer.play(UrlSource(uri.toString()));
   }

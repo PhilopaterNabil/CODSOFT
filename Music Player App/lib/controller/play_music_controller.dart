@@ -31,8 +31,10 @@ class PlayMusicController {
     sliderValueStreamController = StreamController();
     sliderValueInputData = sliderValueStreamController.sink;
     sliderValueOutputData = sliderValueStreamController.stream
+        .asBroadcastStream()
         .map((event) => transferDurationToValueSlider(event));
     sliderValueOutputData = sliderValueStreamController.stream
+        .asBroadcastStream()
         .map((event) => transferDurationToValueSlider(event));
     durationNowStreamController = StreamController<Duration>();
     durationNowInputData = durationNowStreamController.sink;
@@ -65,6 +67,15 @@ class PlayMusicController {
     audioPlayer.seek(duration);
   }
 
+  void onNextTap() {
+    if (index < ConstantsValue.listAlhan.length - 1) {
+      index++;
+    } else {
+      index = 0;
+    }
+    play();
+  }
+
   Duration transferValueSliderToDuration(double sliderValue) {
     double valueNow = (sliderValue / 1.0) * audioTime!.inSeconds.toDouble();
 
@@ -72,7 +83,7 @@ class PlayMusicController {
   }
 
   Future<Duration> play() async {
-    uri = await audioCache.load(ConstantsValue().listAlhan[index].pathSong);
+    uri = await audioCache.load(ConstantsValue.listAlhan[index].pathSong);
 
     await audioPlayer.play(UrlSource(uri.toString()));
     audioTime = await audioPlayer.getDuration();

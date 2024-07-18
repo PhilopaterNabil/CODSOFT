@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                 top: PaddingValue.kPadding32,
               ),
               CustomSongsHomeScreen(
-                songsModel: ConstantsValue().listAlhan,
+                songsModel: ConstantsValue.listAlhan,
                 onTap: (index) => HomeController.navigatorToPlayMusicScreen(
                     context: context, index: index),
               ),
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
               CustomRecommandedMusicHomeScreen(
                 onTap: (index) => HomeController.navigatorToPlayMusicScreen(
                     context: context, index: index),
-                listSongsModel: ConstantsValue().listAlhan,
+                listSongsModel: ConstantsValue.listAlhan,
               ),
             ],
           ),

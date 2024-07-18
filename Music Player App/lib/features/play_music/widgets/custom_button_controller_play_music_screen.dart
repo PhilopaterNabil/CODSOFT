@@ -17,6 +17,8 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
     required this.audioTime,
     required this.durationNowOutputData,
     required this.sliderValueOutputData,
+    required this.onNext,
+    required this.onBack,
   });
 
   final void Function(double) onChangedSlider;
@@ -25,6 +27,8 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
   final Stream<String> durationNowOutputData;
   final Stream<double> sliderValueOutputData;
   final String audioTime;
+  final void Function() onNext;
+  final void Function() onBack;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +42,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
               icon: Image.asset(AssetsManagers.random),
             ),
             CustomSingleButtonController(
-              onPressed: () {},
+              onPressed: onBack,
               image: AssetsManagers.previous,
             ),
             CircleAvatar(
@@ -59,7 +63,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
               ),
             ),
             CustomSingleButtonController(
-              onPressed: () {},
+              onPressed: onNext,
               image: AssetsManagers.next,
             ),
             IconButton(

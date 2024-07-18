@@ -73,7 +73,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                     children: [
                       const Spacer(),
                       CustomSongsDetailsPlayMusicScreen(
-                          songsModel: ConstantsValue().listAlhan[index]),
+                          songsModel: ConstantsValue.listAlhan[index]),
                       const SizedBox(height: HeightValuesManagers.kHeight28),
                       CustomButtonControllerPlayMusicScreen(
                         onChangedSlider: (value) {
@@ -88,6 +88,10 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                             _playMusicController.durationNowOutputData,
                         sliderValueOutputData:
                             _playMusicController.sliderValueOutputData,
+                        onNext: () {
+                          _playMusicController.onNextTap();
+                        },
+                        onBack: () {},
                       ),
                       const CustomToolsPlayMusicScreen(),
                       const CustomTools2PlayMusicScreen(),

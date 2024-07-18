@@ -1,7 +1,7 @@
 import 'package:music_player_app/models/songs_model.dart';
 
 class ConstantsValue {
-  List<SongsModel> listAlhan = [
+  static List<SongsModel> listAlhan = [
     SongsModel(
       pathSong:
           'assets/audios/alhan_audio/لَحْنُ_انثوتين_ذى-المعلم_ابراهيم_عياد.mp3',

@@ -73,6 +73,15 @@ class PlayMusicController {
     audioPlayer.seek(duration);
   }
 
+  void onBackTap() {
+    if (index == 0) {
+      index = ConstantsValue.listAlhan.length - 1;
+    } else {
+      index--;
+    }
+    play();
+  }
+
   void onNextTap() {
     if (index < ConstantsValue.listAlhan.length - 1) {
       index++;

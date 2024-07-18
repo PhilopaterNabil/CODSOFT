@@ -12,20 +12,18 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
   const CustomButtonControllerPlayMusicScreen({
     super.key,
     required this.onChanged,
-    required this.value,
-    required this.pathSong,
     required this.onStop,
     required this.playStatusOutputData,
     required this.audioTime,
     required this.durationNowOutputData,
+    required this.sliderValueOutputData,
   });
 
   final void Function(double) onChanged;
-  final double value;
-  final String pathSong;
   final void Function() onStop;
   final Stream playStatusOutputData;
   final Stream<String> durationNowOutputData;
+  final Stream<double> sliderValueOutputData;
   final String audioTime;
 
   @override
@@ -79,11 +77,14 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
               thumbShape: RoundSliderThumbShape(),
               overlayShape: SliderComponentShape.noOverlay,
             ),
-            child: Slider(
-              activeColor: ColorManagers.kLightWhiteColor,
-              inactiveColor: const Color(0xff2F5D9A),
-              value: 0.5,
-              onChanged: onChanged,
+            child: StreamBuilder<double>(
+              stream: sliderValueOutputData,
+              builder: (context, snapshot) => Slider(
+                activeColor: ColorManagers.kLightWhiteColor,
+                inactiveColor: const Color(0xff2F5D9A),
+                value: snapshot.data == null ? 0 : snapshot.data!.toDouble(),
+                onChanged: onChanged,
+              ),
             ),
           ),
         ),

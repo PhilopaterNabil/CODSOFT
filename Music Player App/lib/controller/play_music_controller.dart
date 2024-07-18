@@ -13,8 +13,12 @@ class PlayMusicController {
   late StreamController<Duration> durationNowStreamController;
   late Sink<Duration> durationNowInputData;
   late Stream<String> durationNowOutputData;
+  late StreamController<Duration> sliderValueStreamController;
+  late Sink<Duration> sliderValueInputData;
+  late Stream<double> sliderValueOutputData;
   late Uri uri;
   late bool isPlaying = true;
+  late double valueSlider = 0;
 
   PlayMusicController._internal(this.index) {
     audioCache = AudioCache(prefix: '');
@@ -24,6 +28,12 @@ class PlayMusicController {
     playStatusOutputData = playStatusStreamController.stream;
     playStatusOutputData =
         playStatusStreamController.stream.asBroadcastStream();
+    sliderValueStreamController = StreamController();
+    sliderValueInputData = sliderValueStreamController.sink;
+    sliderValueOutputData = sliderValueStreamController.stream
+        .map((event) => transferDurationToValueSlider(event));
+    sliderValueOutputData = sliderValueStreamController.stream
+        .map((event) => transferDurationToValueSlider(event));
     durationNowStreamController = StreamController<Duration>();
     durationNowInputData = durationNowStreamController.sink;
     durationNowOutputData = durationNowStreamController.stream
@@ -42,6 +52,16 @@ class PlayMusicController {
   }
 
   Duration? audioTime;
+
+  double transferDurationToValueSlider(Duration duration) {
+    double durationNowInSecond = duration.inSeconds.toDouble();
+    double maxTime = audioTime!.inSeconds.toDouble();
+
+    valueSlider = (durationNowInSecond / maxTime) * 1.0;
+
+    return valueSlider;
+  }
+
   Future<Duration> play() async {
     uri = await audioCache.load(ConstantsValue().listAlhan[index].pathSong);
 
@@ -49,6 +69,7 @@ class PlayMusicController {
     audioTime = await audioPlayer.getDuration();
     audioPlayer.onPositionChanged.listen((event) {
       durationNowInputData.add(event);
+      sliderValueInputData.add(event);
     });
     isPlaying = true;
     playStatusInputData.add(isPlaying);

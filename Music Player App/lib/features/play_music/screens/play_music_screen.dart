@@ -77,8 +77,6 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                       const SizedBox(height: HeightValuesManagers.kHeight28),
                       CustomButtonControllerPlayMusicScreen(
                         onChanged: (value) {},
-                        value: 0.5,
-                        pathSong: ConstantsValue().listAlhan[index].pathSong,
                         onStop: () => _playMusicController.changePlayStatus(),
                         playStatusOutputData:
                             _playMusicController.playStatusOutputData,
@@ -86,6 +84,8 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                             .transferDurationToMinuteAndSecond(snapshot.data),
                         durationNowOutputData:
                             _playMusicController.durationNowOutputData,
+                        sliderValueOutputData:
+                            _playMusicController.sliderValueOutputData,
                       ),
                       const CustomToolsPlayMusicScreen(),
                       const CustomTools2PlayMusicScreen(),

@@ -17,8 +17,10 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
     required this.audioTime,
     required this.durationNowOutputData,
     required this.sliderValueOutputData,
-    required this.onNext,
-    required this.onBack,
+    required this.onTapNext,
+    required this.onTapBack,
+    required this.onTapLoop,
+    required this.loopStatusOutputData,
   });
 
   final void Function(double) onChangedSlider;
@@ -26,9 +28,11 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
   final Stream playStatusOutputData;
   final Stream<String> durationNowOutputData;
   final Stream<double> sliderValueOutputData;
+  final Stream<bool> loopStatusOutputData;
   final String audioTime;
-  final void Function() onNext;
-  final void Function() onBack;
+  final void Function() onTapNext;
+  final void Function() onTapBack;
+  final void Function() onTapLoop;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +46,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
               icon: Image.asset(AssetsManagers.random),
             ),
             CustomSingleButtonController(
-              onPressed: onBack,
+              onPressed: onTapBack,
               image: AssetsManagers.previous,
             ),
             CircleAvatar(
@@ -63,12 +67,20 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
               ),
             ),
             CustomSingleButtonController(
-              onPressed: onNext,
+              onPressed: onTapNext,
               image: AssetsManagers.next,
             ),
             IconButton(
-              onPressed: () {},
-              icon: Image.asset(AssetsManagers.loop),
+              onPressed: onTapLoop,
+              icon: StreamBuilder(
+                stream: loopStatusOutputData,
+                builder: (context, snapshot) => snapshot.data == false
+                    ? Image.asset(AssetsManagers.loop)
+                    : Image.asset(
+                        AssetsManagers.loop,
+                        color: ColorManagers.kLightBlueColor,
+                      ),
+              ),
             ),
           ],
         ),
@@ -85,7 +97,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
               stream: sliderValueOutputData,
               builder: (context, snapshot) => Slider(
                 activeColor: ColorManagers.kLightWhiteColor,
-                inactiveColor: const Color(0xff2F5D9A),
+                inactiveColor: ColorManagers.kBlueColor,
                 value: snapshot.data == null ? 0 : snapshot.data!.toDouble(),
                 onChanged: onChangedSlider,
               ),

@@ -19,9 +19,13 @@ class PlayMusicController {
   late StreamController<int> detailSongStreamController;
   late Sink<int> detailSongInputData;
   late Stream<int> detailSongOutputData;
+  late StreamController<bool> loopStatusStreamController;
+  late Sink<bool> loopStatusInputData;
+  late Stream<bool> loopStatusOutputData;
   late Uri uri;
-  late bool isPlaying = true;
-  late double valueSlider = 0;
+  bool isPlaying = true;
+  double valueSlider = 0;
+  bool loopStatus = false;
 
   PlayMusicController._internal(this.index) {
     audioCache = AudioCache(prefix: '');
@@ -30,6 +34,10 @@ class PlayMusicController {
     playStatusInputData = playStatusStreamController.sink;
     playStatusOutputData =
         playStatusStreamController.stream.asBroadcastStream();
+    loopStatusStreamController = StreamController<bool>();
+    loopStatusInputData = loopStatusStreamController.sink;
+    loopStatusOutputData =
+        loopStatusStreamController.stream.asBroadcastStream();
     detailSongStreamController = StreamController<int>();
     detailSongInputData = detailSongStreamController.sink;
     detailSongOutputData =
@@ -39,13 +47,8 @@ class PlayMusicController {
     sliderValueOutputData = sliderValueStreamController.stream
         .asBroadcastStream()
         .map((event) => transferDurationToValueSlider(event));
-    sliderValueOutputData = sliderValueStreamController.stream
-        .asBroadcastStream()
-        .map((event) => transferDurationToValueSlider(event));
     durationNowStreamController = StreamController<Duration>();
     durationNowInputData = durationNowStreamController.sink;
-    durationNowOutputData = durationNowStreamController.stream
-        .map((event) => transferDurationToMinuteAndSecond(event));
     durationNowOutputData = durationNowStreamController.stream
         .asBroadcastStream()
         .map((event) => transferDurationToMinuteAndSecond(event));
@@ -89,6 +92,17 @@ class PlayMusicController {
       index = 0;
     }
     play();
+  }
+
+  void onTapLoop() {
+    if (audioPlayer.releaseMode == ReleaseMode.loop) {
+      audioPlayer.setReleaseMode(ReleaseMode.release);
+      loopStatus = false;
+    } else {
+      audioPlayer.setReleaseMode(ReleaseMode.loop);
+      loopStatus = true;
+    }
+    loopStatusInputData.add(loopStatus);
   }
 
   Duration transferValueSliderToDuration(double sliderValue) {

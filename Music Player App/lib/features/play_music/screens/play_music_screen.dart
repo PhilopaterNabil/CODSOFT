@@ -94,12 +94,17 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                             _playMusicController.durationNowOutputData,
                         sliderValueOutputData:
                             _playMusicController.sliderValueOutputData,
-                        onNext: () {
+                        onTapNext: () {
                           _playMusicController.onNextTap();
                         },
-                        onBack: () {
+                        onTapBack: () {
                           _playMusicController.onBackTap();
                         },
+                        onTapLoop: () {
+                          _playMusicController.onTapLoop();
+                        },
+                        loopStatusOutputData:
+                            _playMusicController.loopStatusOutputData,
                       ),
                       const CustomToolsPlayMusicScreen(),
                       const CustomTools2PlayMusicScreen(),

@@ -31,12 +31,22 @@ class PlayMusicController {
     return instance!;
   }
 
-  void play() async {
+  Duration? audioTime;
+  Future<Duration> play() async {
     uri = await audioCache.load(ConstantsValue().listAlhan[index].pathSong);
 
-    audioPlayer.play(UrlSource(uri.toString()));
+    await audioPlayer.play(UrlSource(uri.toString()));
+    audioTime = await audioPlayer.getDuration();
     isPlaying = true;
     playStatusInputData.add(isPlaying);
+
+    return audioTime!;
+  }
+
+  Future<String> myDuration() async {
+    await Future.delayed(const Duration(seconds: 4));
+
+    return "hello";
   }
 
   void changePlayStatus() {
@@ -51,7 +61,14 @@ class PlayMusicController {
   }
 
   void displayAudio() {
-    // playStatusInputData.close();
-    // playStatusStreamController.close();
+    playStatusInputData.close();
+    playStatusStreamController.close();
+  }
+
+  String transferDurationToMinuteAndSecond(Duration? duration) {
+    String minute = duration!.inMinutes.remainder(60).toString().padLeft(2, '0');
+    String second = (duration.inSeconds % 60).toString().padLeft(2, '0');
+
+    return '$minute:$second';
   }
 }

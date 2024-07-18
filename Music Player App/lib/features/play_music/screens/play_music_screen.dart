@@ -60,27 +60,40 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
           ),
         ),
         child: SafeArea(
-          child: SizedBox(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Spacer(),
-                CustomSongsDetailsPlayMusicScreen(
-                    songsModel: ConstantsValue().listAlhan[index]),
-                const SizedBox(height: HeightValuesManagers.kHeight28),
-                CustomButtonControllerPlayMusicScreen(
-                  onChanged: (value) {},
-                  value: 0.5,
-                  pathSong: ConstantsValue().listAlhan[index].pathSong,
-                  onStop: () => _playMusicController.changePlayStatus(),
-                  playStatusOutputData:
-                      _playMusicController.playStatusOutputData,
-                ),
-                const CustomToolsPlayMusicScreen(),
-                const CustomTools2PlayMusicScreen(),
-              ],
-            ),
+          child: FutureBuilder(
+            future: _playMusicController.play(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.connectionState == ConnectionState.done) {
+                return SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Spacer(),
+                      CustomSongsDetailsPlayMusicScreen(
+                          songsModel: ConstantsValue().listAlhan[index]),
+                      const SizedBox(height: HeightValuesManagers.kHeight28),
+                      CustomButtonControllerPlayMusicScreen(
+                        onChanged: (value) {},
+                        value: 0.5,
+                        pathSong: ConstantsValue().listAlhan[index].pathSong,
+                        onStop: () => _playMusicController.changePlayStatus(),
+                        playStatusOutputData:
+                            _playMusicController.playStatusOutputData,
+                        audioTime: _playMusicController
+                            .transferDurationToMinuteAndSecond(snapshot.data),
+                      ),
+                      const CustomToolsPlayMusicScreen(),
+                      const CustomTools2PlayMusicScreen(),
+                    ],
+                  ),
+                );
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
           ),
         ),
       ),

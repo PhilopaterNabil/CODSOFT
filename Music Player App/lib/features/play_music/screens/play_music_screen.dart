@@ -72,8 +72,14 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const Spacer(),
-                      CustomSongsDetailsPlayMusicScreen(
-                          songsModel: ConstantsValue.listAlhan[index]),
+                      StreamBuilder(
+                        stream: _playMusicController.detailSongOutputData,
+                        builder: (context, snapshot) =>
+                            CustomSongsDetailsPlayMusicScreen(
+                          songsModel:
+                              ConstantsValue.listAlhan[snapshot.data ?? index],
+                        ),
+                      ),
                       const SizedBox(height: HeightValuesManagers.kHeight28),
                       CustomButtonControllerPlayMusicScreen(
                         onChangedSlider: (value) {

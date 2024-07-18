@@ -16,6 +16,9 @@ class PlayMusicController {
   late StreamController<Duration> sliderValueStreamController;
   late Sink<Duration> sliderValueInputData;
   late Stream<double> sliderValueOutputData;
+  late StreamController<int> detailSongStreamController;
+  late Sink<int> detailSongInputData;
+  late Stream<int> detailSongOutputData;
   late Uri uri;
   late bool isPlaying = true;
   late double valueSlider = 0;
@@ -25,9 +28,12 @@ class PlayMusicController {
     audioPlayer = AudioPlayer();
     playStatusStreamController = StreamController<bool>();
     playStatusInputData = playStatusStreamController.sink;
-    playStatusOutputData = playStatusStreamController.stream;
     playStatusOutputData =
         playStatusStreamController.stream.asBroadcastStream();
+    detailSongStreamController = StreamController<int>();
+    detailSongInputData = detailSongStreamController.sink;
+    detailSongOutputData =
+        detailSongStreamController.stream.asBroadcastStream();
     sliderValueStreamController = StreamController();
     sliderValueInputData = sliderValueStreamController.sink;
     sliderValueOutputData = sliderValueStreamController.stream
@@ -87,6 +93,7 @@ class PlayMusicController {
 
     await audioPlayer.play(UrlSource(uri.toString()));
     audioTime = await audioPlayer.getDuration();
+    detailSongInputData.add(index);
     audioPlayer.onPositionChanged.listen((event) {
       durationNowInputData.add(event);
       sliderValueInputData.add(event);

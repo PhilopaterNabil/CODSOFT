@@ -10,8 +10,11 @@ class PlayMusicController {
   late StreamController<bool> playStatusStreamController;
   late Sink<bool> playStatusInputData;
   late Stream<bool> playStatusOutputData;
+  late StreamController<Duration> durationNowStreamController;
+  late Sink<Duration> durationNowInputData;
+  late Stream<String> durationNowOutputData;
   late Uri uri;
-  late bool isPlaying;
+  late bool isPlaying = true;
 
   PlayMusicController._internal(this.index) {
     audioCache = AudioCache(prefix: '');
@@ -21,6 +24,13 @@ class PlayMusicController {
     playStatusOutputData = playStatusStreamController.stream;
     playStatusOutputData =
         playStatusStreamController.stream.asBroadcastStream();
+    durationNowStreamController = StreamController<Duration>();
+    durationNowInputData = durationNowStreamController.sink;
+    durationNowOutputData = durationNowStreamController.stream
+        .map((event) => transferDurationToMinuteAndSecond(event));
+    durationNowOutputData = durationNowStreamController.stream
+        .asBroadcastStream()
+        .map((event) => transferDurationToMinuteAndSecond(event));
   }
 
   static PlayMusicController? instance;
@@ -37,6 +47,9 @@ class PlayMusicController {
 
     await audioPlayer.play(UrlSource(uri.toString()));
     audioTime = await audioPlayer.getDuration();
+    audioPlayer.onPositionChanged.listen((event) {
+      durationNowInputData.add(event);
+    });
     isPlaying = true;
     playStatusInputData.add(isPlaying);
 
@@ -66,7 +79,8 @@ class PlayMusicController {
   }
 
   String transferDurationToMinuteAndSecond(Duration? duration) {
-    String minute = duration!.inMinutes.remainder(60).toString().padLeft(2, '0');
+    String minute =
+        duration!.inMinutes.remainder(60).toString().padLeft(2, '0');
     String second = (duration.inSeconds % 60).toString().padLeft(2, '0');
 
     return '$minute:$second';

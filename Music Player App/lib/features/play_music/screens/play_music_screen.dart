@@ -84,6 +84,8 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                             _playMusicController.playStatusOutputData,
                         audioTime: _playMusicController
                             .transferDurationToMinuteAndSecond(snapshot.data),
+                        durationNowOutputData:
+                            _playMusicController.durationNowOutputData,
                       ),
                       const CustomToolsPlayMusicScreen(),
                       const CustomTools2PlayMusicScreen(),

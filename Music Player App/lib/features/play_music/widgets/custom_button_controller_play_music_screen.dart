@@ -17,6 +17,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
     required this.onStop,
     required this.playStatusOutputData,
     required this.audioTime,
+    required this.durationNowOutputData,
   });
 
   final void Function(double) onChanged;
@@ -24,6 +25,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
   final String pathSong;
   final void Function() onStop;
   final Stream playStatusOutputData;
+  final Stream<String> durationNowOutputData;
   final String audioTime;
 
   @override
@@ -93,12 +95,15 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                '2:05',
-                style: TextStyle(
-                  color: ColorManagers.kLightWhiteColor,
-                  fontSize: FontSizeManagers.kFontSize13,
-                  fontWeight: FontWeightManagers.kMedium,
+              StreamBuilder<String?>(
+                stream: durationNowOutputData,
+                builder: (context, snapshot) => Text(
+                  snapshot.data.toString(),
+                  style: const TextStyle(
+                    color: ColorManagers.kLightWhiteColor,
+                    fontSize: FontSizeManagers.kFontSize13,
+                    fontWeight: FontWeightManagers.kMedium,
+                  ),
                 ),
               ),
               Text(

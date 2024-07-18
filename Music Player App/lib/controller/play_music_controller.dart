@@ -56,10 +56,19 @@ class PlayMusicController {
   double transferDurationToValueSlider(Duration duration) {
     double durationNowInSecond = duration.inSeconds.toDouble();
     double maxTime = audioTime!.inSeconds.toDouble();
-
     valueSlider = (durationNowInSecond / maxTime) * 1.0;
-
     return valueSlider;
+  }
+
+  void onChangedThumSlider(double value) {
+    Duration duration = transferValueSliderToDuration(value);
+    audioPlayer.seek(duration);
+  }
+
+  Duration transferValueSliderToDuration(double sliderValue) {
+    double valueNow = (sliderValue / 1.0) * audioTime!.inSeconds.toDouble();
+
+    return Duration(seconds: valueNow.toInt());
   }
 
   Future<Duration> play() async {

@@ -76,7 +76,9 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                           songsModel: ConstantsValue().listAlhan[index]),
                       const SizedBox(height: HeightValuesManagers.kHeight28),
                       CustomButtonControllerPlayMusicScreen(
-                        onChanged: (value) {},
+                        onChangedSlider: (value) {
+                          _playMusicController.onChangedThumSlider(value);
+                        },
                         onStop: () => _playMusicController.changePlayStatus(),
                         playStatusOutputData:
                             _playMusicController.playStatusOutputData,

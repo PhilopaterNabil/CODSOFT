@@ -11,7 +11,7 @@ import 'package:music_player_app/features/play_music/widgets/custom_single_butto
 class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
   const CustomButtonControllerPlayMusicScreen({
     super.key,
-    required this.onChanged,
+    required this.onChangedSlider,
     required this.onStop,
     required this.playStatusOutputData,
     required this.audioTime,
@@ -19,7 +19,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
     required this.sliderValueOutputData,
   });
 
-  final void Function(double) onChanged;
+  final void Function(double) onChangedSlider;
   final void Function() onStop;
   final Stream playStatusOutputData;
   final Stream<String> durationNowOutputData;
@@ -83,7 +83,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
                 activeColor: ColorManagers.kLightWhiteColor,
                 inactiveColor: const Color(0xff2F5D9A),
                 value: snapshot.data == null ? 0 : snapshot.data!.toDouble(),
-                onChanged: onChanged,
+                onChanged: onChangedSlider,
               ),
             ),
           ),

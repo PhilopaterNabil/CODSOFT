@@ -12,6 +12,7 @@ class CustomSearchFeature extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const CustomTitleHomeScreen(
           title: StringsValuesManagers.searchSong,

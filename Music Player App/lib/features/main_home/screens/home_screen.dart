@@ -10,13 +10,24 @@ import 'package:music_player_app/features/main_home/widgets/custom_search_featur
 import 'package:music_player_app/features/main_home/widgets/custom_text_field_home_screen.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_title_home_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final HomeScreenController homeScreenController = HomeScreenController();
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
+  final HomeScreenController homeScreenController = HomeScreenController();
+
+  @override
+  void dispose() {
+    homeScreenController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
       decoration: const BoxDecoration(
@@ -36,8 +47,11 @@ class HomeScreen extends StatelessWidget {
             children: [
               CustomTextFieldHomeScreen(
                 onTap: () => homeScreenController.onTapOnSearchTextField(),
-                onTapOutside: (event) =>
+                isSearchNow: homeScreenController.tappedOnSearchTextField,
+                onTapCloseIcon: () =>
                     homeScreenController.onTapOutsideOnSearchTextField(),
+                streamCloseStatus:
+                    homeScreenController.closeStatusSearchTextFieldOutputData,
               ),
               StreamBuilder(
                 stream: homeScreenController.tappedOnSearchTextFieldOutputData,

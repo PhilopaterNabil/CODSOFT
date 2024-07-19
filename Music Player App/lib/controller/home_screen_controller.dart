@@ -13,6 +13,9 @@ class HomeScreenController {
   late StreamController<bool> closeStatusSearchTextFieldStreamController;
   late Sink<bool> closeStatusSearchTextFieldInputData;
   late Stream<bool> closeStatusSearchTextFieldOutputData;
+  late StreamController<List<SongsModel>> listSearchTextFieldStreamController;
+  late Sink<List<SongsModel>> listSearchTextFieldInputData;
+  late Stream<List<SongsModel>> listSearchTextFieldOutputData;
   List<SongsModel> listSearchModel = [];
 
   HomeScreenController() {
@@ -26,8 +29,12 @@ class HomeScreenController {
         closeStatusSearchTextFieldStreamController.sink;
     closeStatusSearchTextFieldOutputData =
         closeStatusSearchTextFieldStreamController.stream;
+    listSearchTextFieldStreamController = StreamController<List<SongsModel>>();
+    listSearchTextFieldInputData = listSearchTextFieldStreamController.sink;
+    listSearchTextFieldOutputData = listSearchTextFieldStreamController.stream;
     tappedOnSearchTextFieldInputData.add(tappedOnSearchTextField);
     closeStatusSearchTextFieldInputData.add(tappedOnSearchTextField);
+    listSearchTextFieldInputData.add(listSearchModel);
   }
   static void navigatorToPlayMusicScreen(
       {required BuildContext context, required int index}) {
@@ -59,7 +66,7 @@ class HomeScreenController {
         .toList();
     listSearchModel.clear();
     listSearchModel = a;
-    for (SongsModel s in a) {}
+    listSearchTextFieldInputData.add(listSearchModel);
   }
 
   void dispose() {

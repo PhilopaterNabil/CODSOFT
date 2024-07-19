@@ -61,7 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     return const SizedBox();
                   } else {
                     return CustomSearchFeature(
-                      listSearch: homeScreenController.listSearchModel,
+                      listSearchOutputData:
+                          homeScreenController.listSearchTextFieldOutputData,
                     );
                   }
                 },

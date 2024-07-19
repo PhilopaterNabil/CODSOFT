@@ -21,6 +21,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
     required this.onTapBack,
     required this.onTapLoop,
     required this.loopStatusOutputData,
+    required this.onTapRandom,
   });
 
   final void Function(double) onChangedSlider;
@@ -33,6 +34,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
   final void Function() onTapNext;
   final void Function() onTapBack;
   final void Function() onTapLoop;
+  final void Function() onTapRandom;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class CustomButtonControllerPlayMusicScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: onTapRandom,
               icon: Image.asset(AssetsManagers.random),
             ),
             CustomSingleButtonController(

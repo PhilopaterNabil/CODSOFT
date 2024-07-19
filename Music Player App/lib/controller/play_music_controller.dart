@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:music_player_app/core/resources/constants_value.dart';
@@ -68,12 +69,22 @@ class PlayMusicController {
     double durationNowInSecond = duration.inSeconds.toDouble();
     double maxTime = audioTime!.inSeconds.toDouble();
     valueSlider = (durationNowInSecond / maxTime) * 1.0;
+    valueSlider = valueSlider > 1 ? 1 : valueSlider;
     return valueSlider;
   }
 
   void onChangedThumSlider(double value) {
     Duration duration = transferValueSliderToDuration(value);
     audioPlayer.seek(duration);
+  }
+
+  void onTapRandom() {
+    int i = index = Random().nextInt(ConstantsValue.listAlhan.length);
+    if (i == index) {
+      i = Random().nextInt(ConstantsValue.listAlhan.length);
+    }
+    index = i;
+    play();
   }
 
   void onBackTap() {
@@ -118,11 +129,14 @@ class PlayMusicController {
     audioTime = await audioPlayer.getDuration();
     detailSongInputData.add(index);
     audioPlayer.onPositionChanged.listen((event) {
+      playStatusInputData.add(isPlaying);
       durationNowInputData.add(event);
       sliderValueInputData.add(event);
     });
+    audioPlayer.onPlayerComplete.listen((event) {
+      onNextTap();
+    });
     isPlaying = true;
-    playStatusInputData.add(isPlaying);
 
     return audioTime!;
   }

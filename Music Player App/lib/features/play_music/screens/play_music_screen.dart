@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:music_player_app/controller/home_controller.dart';
+import 'package:music_player_app/controller/home_screen_controller.dart';
 import 'package:music_player_app/controller/play_music_controller.dart';
 import 'package:music_player_app/core/resources/alignment_managers.dart';
 import 'package:music_player_app/core/resources/color_managers.dart';
@@ -45,7 +45,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
       extendBodyBehindAppBar: true,
       appBar: CustomAppBarPlayMusicScreen(
         onPressedArrowBack: () =>
-            HomeController.navigatorToPop(context: context),
+            HomeScreenController.navigatorToPop(context: context),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -105,6 +105,9 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                         },
                         loopStatusOutputData:
                             _playMusicController.loopStatusOutputData,
+                        onTapRandom: () {
+                          _playMusicController.onTapRandom();
+                        },
                       ),
                       const CustomToolsPlayMusicScreen(),
                       const CustomTools2PlayMusicScreen(),

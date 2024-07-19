@@ -7,7 +7,9 @@ import 'package:music_player_app/core/resources/radius_values_managers.dart';
 import 'package:music_player_app/core/resources/strings_values_managers.dart';
 
 class CustomTextFieldHomeScreen extends StatelessWidget {
-  const CustomTextFieldHomeScreen({super.key});
+  const CustomTextFieldHomeScreen({super.key, required this.onTap});
+
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,7 @@ class CustomTextFieldHomeScreen extends StatelessWidget {
           left: PaddingValue.kPadding31,
           right: PaddingValue.kPadding31),
       child: TextField(
+        onTap: onTap,
         decoration: InputDecoration(
           filled: true,
           fillColor: ColorManagers.kLightWhiteColor,

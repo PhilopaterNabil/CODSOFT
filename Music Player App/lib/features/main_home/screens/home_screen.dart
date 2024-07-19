@@ -52,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     homeScreenController.onTapOutsideOnSearchTextField(),
                 streamCloseStatus:
                     homeScreenController.closeStatusSearchTextFieldOutputData,
+                onChanged: (value) {},
               ),
               StreamBuilder(
                 stream: homeScreenController.tappedOnSearchTextFieldOutputData,
@@ -59,7 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (snapshot.data == null || snapshot.data == false) {
                     return const SizedBox();
                   } else {
-                    return const CustomSearchFeature();
+                    return CustomSearchFeature(
+                      listSearch: homeScreenController.listSearchModel,
+                    );
                   }
                 },
               ),

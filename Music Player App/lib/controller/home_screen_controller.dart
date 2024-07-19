@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:music_player_app/core/resources/constants_value.dart';
 import 'package:music_player_app/core/resources/routes_managers.dart';
+import 'package:music_player_app/models/songs_model.dart';
 
 class HomeScreenController {
   bool tappedOnSearchTextField = false;
@@ -11,6 +13,7 @@ class HomeScreenController {
   late StreamController<bool> closeStatusSearchTextFieldStreamController;
   late Sink<bool> closeStatusSearchTextFieldInputData;
   late Stream<bool> closeStatusSearchTextFieldOutputData;
+  List<SongsModel> listSearchModel = [];
 
   HomeScreenController() {
     tappedOnSearchTextFieldStreamController = StreamController<bool>();
@@ -46,6 +49,17 @@ class HomeScreenController {
     tappedOnSearchTextFieldInputData.add(tappedOnSearchTextField);
     closeStatusSearchTextFieldInputData.add(tappedOnSearchTextField);
     FocusManager.instance.primaryFocus?.unfocus();
+  }
+
+  void searchAboutSong(String value) {
+    List<SongsModel> a = ConstantsValue.listAlhan
+        .where(
+          (element) => element.song.toLowerCase().contains(value),
+        )
+        .toList();
+    listSearchModel.clear();
+    listSearchModel = a;
+    for (SongsModel s in a) {}
   }
 
   void dispose() {

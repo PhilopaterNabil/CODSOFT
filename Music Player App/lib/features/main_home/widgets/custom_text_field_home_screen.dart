@@ -12,11 +12,12 @@ class CustomTextFieldHomeScreen extends StatelessWidget {
     required this.onTap,
     this.isSearchNow = false,
     required this.onTapCloseIcon,
-    required this.streamCloseStatus,
+    required this.streamCloseStatus, required this.onChanged,
   });
 
   final void Function() onTap;
   final void Function() onTapCloseIcon;
+  final void Function(String) onChanged;
   final bool isSearchNow;
   final Stream streamCloseStatus;
 
@@ -31,6 +32,7 @@ class CustomTextFieldHomeScreen extends StatelessWidget {
         stream: streamCloseStatus,
         builder: (context, snapshot) => TextField(
           onTap: onTap,
+          onChanged: onChanged,
           decoration: InputDecoration(
             filled: true,
             fillColor: ColorManagers.kLightWhiteColor,

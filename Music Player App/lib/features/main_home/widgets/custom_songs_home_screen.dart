@@ -9,9 +9,10 @@ import 'package:music_player_app/models/songs_model.dart';
 
 class CustomSongsHomeScreen extends StatelessWidget {
   const CustomSongsHomeScreen(
-      {super.key, required this.songsModel, required this.onTap});
+      {super.key, required this.songsModel, required this.onTap, required this.itemCount});
 
   final List<SongsModel> songsModel;
+  final int itemCount;
   final void Function(int index) onTap;
 
   @override
@@ -22,7 +23,7 @@ class CustomSongsHomeScreen extends StatelessWidget {
         padding: const EdgeInsets.only(
             left: PaddingValue.kPadding20, top: PaddingValue.kPadding22),
         child: ListView.separated(
-          itemCount: songsModel.length,
+          itemCount: itemCount,
           scrollDirection: Axis.horizontal,
           separatorBuilder: (context, index) =>
               const SizedBox(width: WidthValuesManagers.kWidth17),

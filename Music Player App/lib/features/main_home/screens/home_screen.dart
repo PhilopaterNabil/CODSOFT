@@ -10,23 +10,13 @@ import 'package:music_player_app/features/main_home/widgets/custom_search_featur
 import 'package:music_player_app/features/main_home/widgets/custom_text_field_home_screen.dart';
 import 'package:music_player_app/features/main_home/widgets/custom_title_home_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  late HomeScreenController _homeScreenController;
-  @override
-  void initState() {
-    super.initState();
-    _homeScreenController = HomeScreenController();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final HomeScreenController homeScreenController = HomeScreenController();
+
     return Container(
       height: double.infinity,
       decoration: const BoxDecoration(
@@ -45,19 +35,20 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomTextFieldHomeScreen(
-                onTap: () => _homeScreenController.onTapOnSearchTextField(),
+                onTap: () => homeScreenController.onTapOnSearchTextField(),
+                onTapOutside: (event) =>
+                    homeScreenController.onTapOutsideOnSearchTextField(),
               ),
-                StreamBuilder(
-                  stream:
-                      _homeScreenController.tappedOnSearchTextFieldOutputData,
-                  builder: (context, snapshot) {
-                    if (snapshot.data == null || snapshot.data == false) {
-                      return const SizedBox();
-                    } else {
-                      return const CustomSearchFeature();
-                    }
-                  },
-                ),
+              StreamBuilder(
+                stream: homeScreenController.tappedOnSearchTextFieldOutputData,
+                builder: (context, snapshot) {
+                  if (snapshot.data == null || snapshot.data == false) {
+                    return const SizedBox();
+                  } else {
+                    return const CustomSearchFeature();
+                  }
+                },
+              ),
               const CustomTitleHomeScreen(
                 title: StringsValuesManagers.recommandedMusic,
                 top: PaddingValue.kPadding31,

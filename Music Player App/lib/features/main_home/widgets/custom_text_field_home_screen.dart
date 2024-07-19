@@ -7,9 +7,11 @@ import 'package:music_player_app/core/resources/radius_values_managers.dart';
 import 'package:music_player_app/core/resources/strings_values_managers.dart';
 
 class CustomTextFieldHomeScreen extends StatelessWidget {
-  const CustomTextFieldHomeScreen({super.key, required this.onTap});
+  const CustomTextFieldHomeScreen(
+      {super.key, required this.onTap, required this.onTapOutside});
 
   final void Function() onTap;
+  final void Function(PointerDownEvent) onTapOutside;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class CustomTextFieldHomeScreen extends StatelessWidget {
           left: PaddingValue.kPadding31,
           right: PaddingValue.kPadding31),
       child: TextField(
+        onTapOutside: (event) => onTapOutside(event),
         onTap: onTap,
         decoration: InputDecoration(
           filled: true,

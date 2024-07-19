@@ -30,6 +30,12 @@ class HomeScreenController {
     tappedOnSearchTextFieldInputData.add(tappedOnSearchTextField);
   }
 
+  void onTapOutsideOnSearchTextField() {
+    tappedOnSearchTextField = false;
+    tappedOnSearchTextFieldInputData.add(tappedOnSearchTextField);
+    FocusManager.instance.primaryFocus?.unfocus();
+  }
+
   void dispose() {
     tappedOnSearchTextFieldInputData.close();
     tappedOnSearchTextFieldStreamController.close();
